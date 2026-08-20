@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Insurance Financial Accounting Learning Suite</title>
+  <style>
+    :root {
+      --primary: #0f2d59;
+      --primary-accent: #1d4ed8;
+      --primary-light: #eff6ff;
+      --success-bg: #ecfdf5;
+      --success-border: #a7f3d0;
+      --success-text: #065f46;
+      --error-bg: #fef2f2;
+      --error-border: #fecaca;
+      --error-text: #991b1b;
+      --card-bg: #ffffff;
+      --bg: #f8fafc;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 24px 16px; line-height: 1.6; }
+    .container { max-width: 1020px; margin: 0 auto; }
+    
+    .header { background: var(--card-bg); padding: 22px 28px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .header-text { flex: 1; min-width: 280px; }
+    .header h1 { font-size: 1.4rem; color: var(--primary); margin-bottom: 6px; }
+    .header p { color: var(--muted); font-size: 0.9rem; }
+    .badge { display: inline-block; background: var(--primary-light); color: var(--primary-accent); font-weight: 700; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; margin-bottom: 6px; }
+
+    .module-picker select {
+      background: #ffffff;
+      border: 2px solid var(--primary-accent);
+      color: var(--primary);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--border); margin-bottom: 20px; flex-wrap: wrap; }
+    .tab { padding: 12px 18px; border: none; background: none; font-size: 0.95rem; font-weight: 600; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; }
+    .tab.active { color: var(--primary); border-color: var(--primary-accent); background: #ffffff; border-radius: 8px 8px 0 0; }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    h2 { font-size: 1.25rem; color: var(--primary); margin-bottom: 14px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    h3 { font-size: 1.05rem; color: #1e293b; margin: 18px 0 8px; }
+    p, li { font-size: 0.92rem; color: #334155; margin-bottom: 10px; }
+    ul, ol { padding-left: 22px; margin-bottom: 14px; }
+
+    .topic-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .topic-pill { padding: 6px 12px; border-radius: 9999px; background: #e2e8f0; border: none; font-size: 0.82rem; font-weight: 600; cursor: pointer; color: #334155; }
+    .topic-pill.active { background: var(--primary-accent); color: white; }
+
+    .callout { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 0.9rem; }
+    .callout-warn { background: #fefce8; border-left: 4px solid #ca8a04; padding: 14px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 0.9rem; }
+
+    /* Dashboard & Metrics */
+    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .stat-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+    .stat-val { font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+    .stat-lbl { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+
+    .btn { display: block; width: 100%; text-align: left; padding: 12px 16px; margin: 8px 0; border: 1px solid var(--border); border-radius: 8px; background: #fff; cursor: pointer; font-size: 0.92rem; transition: 0.15s ease; }
+    .btn:hover { background: #f8fafc; border-color: var(--primary-accent); }
+    .primary-btn { display: inline-block; width: auto; background: var(--primary); color: white; padding: 10px 20px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; margin-top: 12px; }
+    .primary-btn:hover { background: var(--primary-accent); }
+
+    .feedback { padding: 14px; border-radius: 8px; margin-top: 14px; font-size: 0.9rem; line-height: 1.5; }
+    .feedback.correct { background: var(--success-bg); border: 1px solid var(--success-border); color: var(--success-text); }
+    .feedback.incorrect { background: var(--error-bg); border: 1px solid var(--error-border); color: var(--error-text); }
+
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; }
+    th { background: #f8fafc; color: #1e293b; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-text">
+        <span class="badge" id="module-badge">Master Curriculum Track • Module 01</span>
+        <h1 id="module-title">General Insurance Accounting: Meaning, Scope & Regulatory Architecture</h1>
+        <p id="module-desc">Interactive Self-Paced Learning Engine for Non-Life Insurance Professionals</p>
+      </div>
+      <div class="module-picker">
+        <label for="module-select" style="display:block; font-size:0.75rem; font-weight:700; color:var(--muted); margin-bottom:4px;">SWITCH MODULE:</label>
+        <select id="module-select" onchange="loadModule(this.value)">
+          <option value="1">Unit 1: Meaning & Scope</option>
+          <option value="2">Unit 2: Concepts & Principles</option>
+          <option value="3">Unit 3: Standards (AS & Ind AS)</option>
+          <option value="4">Unit 4: Accounting Policies</option>
+          <option value="5">Unit 5: Accounting Process</option>
+          <option value="6">Unit 6: Methods, Procedures & Final Accounts</option>
+          <option value="7">Unit 7: Depreciation Accounting</option>
+          <option value="8">Unit 8: Bank Reconciliation Statement (BRS)</option>
+          <option value="9">Unit 9: Company Accounts (Companies Act 2013)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('learn')">1. Core Knowledge Tracks</button>
+      <button class="tab" onclick="switchTab('sim')">2. Apex Simulation Sandbox</button>
+      <button class="tab" onclick="switchTab('ty')">3. Checkpoint Drills</button>
+      <button class="tab" onclick="switchTab('test')">4. Comprehensive Mastery Exam</button>
+    </div>
+
+    <!-- TAB 1: KNOWLEDGE TRACKS -->
+    <div id="learn" class="panel active">
+      <div class="card">
+        <div class="topic-pills" id="topic-pills-container"></div>
+        <div id="learn-content-container"></div>
+      </div>
+    </div>
+
+    <!-- TAB 2: INTERACTIVE SIMULATION -->
+    <div id="sim" class="panel">
+      <div class="card">
+        <h2 id="sim-title">Apex Shield Insurance: Operational Financial Simulator</h2>
+        <p id="sim-subtitle">Step into the role of Financial Controller. Process live transactions and monitor the dynamic accounting equation.</p>
+        
+        <div class="dashboard">
+          <div class="stat-card">
+            <div class="stat-val" id="val-cash">₹0</div>
+            <div class="stat-lbl">Liquid Bank Funds (Asset)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="val-equity">₹0</div>
+            <div class="stat-lbl">Equity / Net Worth</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="val-liab">₹0</div>
+            <div class="stat-lbl">Liabilities & Reserves</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="val-rev">₹0</div>
+            <div class="stat-lbl">Earned Surplus (P&L)</div>
+          </div>
+        </div>
+
+        <div id="sim-content"></div>
+      </div>
+    </div>
+
+    <!-- TAB 3: CHECKPOINT DRILLS -->
+    <div id="ty" class="panel">
+      <div class="card">
+        <h2>Checkpoint Drills (Formative Knowledge Checks)</h2>
+        <p>Validate your understanding of key principles and statutory standards before advancing.</p>
+        <div id="ty-container"></div>
+      </div>
+    </div>
+
+    <!-- TAB 4: COMPREHENSIVE MASTERY EXAM -->
+    <div id="test" class="panel">
+      <div class="card">
+        <h2>Comprehensive Assessment Bank</h2>
+        <p>Scenario-based exam evaluation testing core concepts, regulatory guidelines, and accounting mechanics.</p>
+        <div id="exam-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      document.querySelectorAll('.tab').forEach(b => {
+        if(b.getAttribute('onclick').includes(tabId)) b.classList.add('active');
+      });
+    }
+
+    function showOutcome(num) {
+      document.querySelectorAll('.topic-pill').forEach((p, idx) => {
+        p.classList.toggle('active', idx === num - 1);
+      });
+      document.querySelectorAll('.outcome-section').forEach((sec, idx) => {
+        sec.style.display = (idx === num - 1) ? 'block' : 'none';
+      });
+    }
+
+    const modules = {
+      1: {
+        badge: "Master Curriculum Track • Module 01",
+        title: "General Insurance Accounting: Meaning, Scope & Regulatory Architecture",
+        desc: "Interactive Self-Paced Learning Engine for Non-Life Insurance Professionals",
+        simTitle: "Apex Shield Insurance: Operational Financial Simulator",
+        simSubtitle: "Step into the role of Financial Controller. Process live transactions and monitor the dynamic accounting equation.",
+        initialFinancials: { cash: 0, equity: 0, liab: 0, rev: 0 },
+        pills: ["Domain 1: Accounting Foundations", "Domain 2: Objectives & Solvency Margins", "Domain 3: 7 Inherent Limitations", "Domain 4: Books & Operational Registers"],
+        outcomes: [
+          `<h2>Domain 1: Definition, Scope & Sectoral Accounting Systems</h2>
+           <p>Accounting is the analytical discipline of <strong>identifying, recording, classifying, summarising, analysing, interpreting, and communicating</strong> financial transactions in monetary units.</p>
+           <ul>
+             <li><strong>Universal Function:</strong> Recording economic activities to establish accountability and provide reliable intelligence for decision-makers.</li>
+             <li><strong>The Event vs. Transaction Rule:</strong> <em>"All transactions are events, but all events are not transactions."</em> An event qualifies as a transaction only when measurable in money and alters the financial position.</li>
+           </ul>`,
+          `<h2>Domain 2: Strategic Objectives & Insurance Solvency Mechanics</h2>
+           <div class="callout">
+             Insurance financial health centers primarily upon <strong>Solvency</strong> and <strong>Liquidity</strong>:
+             <ul>
+               <li><strong>Required Solvency Margin (RSM):</strong> Computed based on net business premium volume and incurred claims.</li>
+               <li><strong>Available Solvency Margin (ASM):</strong> Excess of statutory <em>admissible assets</em> over liabilities[cite: 1].</li>
+             </ul>
+           </div>`,
+          `<h2>Domain 3: Inherent Limitations of Financial Accounting</h2>
+           <table>
+             <thead><tr><th>Limitation</th><th>Operational Impact</th></tr></thead>
+             <tbody>
+               <tr><td><strong>Alternative Treatments</strong></td><td>GAAP permits multiple acceptable methods causing variance[cite: 1].</td></tr>
+               <tr><td><strong>Subjective Estimates</strong></td><td>Outstanding claim estimates rely on loss assessor judgment[cite: 1].</td></tr>
+               <tr><td><strong>Non-Monetary Omission</strong></td><td>Qualitative drivers like employee efficiency are omitted[cite: 1].</td></tr>
+             </tbody>
+           </table>`,
+          `<h2>Domain 4: Books of Account & Insurance Office Registers</h2>
+           <p>Companies maintain accounts on <strong>accrual basis</strong> under <strong>double-entry</strong>, preserving books and vouchers for at least <strong>8 preceding financial years</strong>[cite: 1].</p>`
+        ],
+        simSteps: [
+          {
+            scenario: "The founding promoter contributes ₹50,00,000 personal seed capital into the official bank account.",
+            question: "Under the Business Entity Concept, what is the correct recording entry?",
+            choices: [
+              { text: "Debit Corporate Bank Account ₹50L | Credit Equity Share Capital ₹50L", correct: true, cash: 5000000, equity: 5000000, liab: 0, rev: 0, explanation: "Correct! The business is distinct from its promoter. Contributed funds represent equity claims[cite: 1]." },
+              { text: "No entry required as this originates from promoter's private savings", correct: false, explanation: "Concept Error: Ignored Business Entity distinction[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: Accounting frameworks adopted by an enterprise are primarily governed by:", a: "The nature of business operations and applicable statutory laws", b: "The personal preference of the internal cashier", c: "International market currency indices exclusively", d: "The total number of staff employed", correct: "a", why: "Accounting methods must align with the operational model and applicable statutes[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: Which accounting recording method guarantees arithmetical equality via a Trial Balance?", a: "Double Entry System", b: "Single Entry System", c: "Direct Petty Cash Record", d: "Ad-hoc Memo Ledger", correct: "a", why: "Double entry ensures balanced debits and credits, enabling arithmetical verification[cite: 1]." }
+        ]
+      },
+      2: {
+        badge: "Master Curriculum Track • Module 02",
+        title: "Accounting Concepts, Principles, Conventions & Financial Statement Elements",
+        desc: "Interactive Self-Paced Learning Engine for Non-Life Insurance Professionals",
+        simTitle: "Apex Shield Insurance: Module 02 Concept Sandbox",
+        simSubtitle: "Apply foundational concepts and valuation conventions to real-world transactions.",
+        initialFinancials: { cash: 7000000, equity: 7000000, liab: 0, rev: 0 },
+        pills: ["Domain 1: 9 Core Concepts", "Domain 2: Core Principles", "Domain 3: Statement Elements", "Domain 4: Insurance Mechanics"],
+        outcomes: [
+          `<h2>Domain 1: Nine Foundational Accounting Concepts</h2>
+           <ul>
+             <li><strong>1. Business Entity:</strong> Business and owner are strictly separate[cite: 1].</li>
+             <li><strong>2. Money Measurement:</strong> Only transactions in monetary terms are recorded[cite: 1].</li>
+             <li><strong>3. Going Concern:</strong> Assumes indefinite business continuity[cite: 1].</li>
+             <li><strong>4. Accounting Period:</strong> Financial results are determined for a specified timeframe[cite: 1].</li>
+             <li><strong>5. Historical Cost:</strong> Assets recorded at purchase/acquisition cost, not market value[cite: 1].</li>
+             <li><strong>6. Dual Aspect:</strong> <code>Assets = Liabilities + Capital</code>[cite: 1].</li>
+             <li><strong>7. Realisation:</strong> Revenue is recognised when legal right to receive arises[cite: 1].</li>
+             <li><strong>8. Accrual:</strong> Revenues recognised when realisable, expenses when incurred[cite: 1].</li>
+             <li><strong>9. Matching:</strong> Revenues and related expenses must belong to same period[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 2: Core Accounting Principles & Valuation Conventions</h2>
+           <div class="callout"><strong>Consistency:</strong> Uniformity in policies period after period[cite: 1].</div>
+           <div class="callout-warn"><strong>Prudence / Conservatism:</strong> Anticipate no profits, provide for all possible losses[cite: 1].</div>
+           <div class="callout"><strong>Materiality:</strong> Focus on items having a material financial bearing[cite: 1].</div>`,
+          `<h2>Domain 3: Elements of Financial Statements</h2>
+           <p>Balance Sheet encompasses Assets, Liabilities, and Equity[cite: 1]. Income Statement / Revenue A/c covers Revenues and Expenses[cite: 1].</p>`,
+          `<h2>Domain 4: Insurance-Specific Accounting Mechanics</h2>
+           <p>Net Premium Earned and Incurred Claims are matched across operational accounting cycles using Unearned Premium Reserves[cite: 1].</p>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield acquires commercial office property for ₹50,00,000, spending ₹5,00,000 on elevation and ₹5,00,000 on registration[cite: 1]. Market value is ₹70,00,000[cite: 1].",
+            question: "Under the Historical Cost Concept, what is the capitalized balance sheet asset value?[cite: 1]",
+            choices: [
+              { text: "Capitalize at ₹60,00,000 (Purchase + Direct Renovation + Legal Levies)", correct: true, cash: -6000000, equity: 0, liab: 0, rev: 0, explanation: "Correct! Historical cost capitalizes acquisition price plus all necessary installation and legal costs (₹50L + ₹5L + ₹5L = ₹60L)[cite: 1]." },
+              { text: "Record at ₹70,00,000 based on current market valuation", correct: false, explanation: "Concept Error: Market value appreciation cannot be booked prior to realization[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: Valuing inventory at lower of cost or Net Realisable Value (NRV) reflects:", a: "Principle of Prudence / Conservatism", b: "Principle of Consistency", c: "Materiality Concept", d: "Realisation Concept", correct: "a", why: "Conservatism mandates that all foreseeable losses are accounted for immediately[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: In non-life insurance, the Matching Principle is applied by:", a: "Creating a Reserve for Unexpired Risk for coverage extending past period-end", b: "Booking premium on 100% cash receipt basis into surplus", c: "Omitting outstanding claims from annual expenses", d: "Ignoring reinsurance cessions", correct: "a", why: "Reserving unearned premium matches premium with the actual future coverage period[cite: 1]." }
+        ]
+      },
+      3: {
+        badge: "Master Curriculum Track • Module 03",
+        title: "Accounting Standards: AS, Ind AS, IFRS & Insurance Sectoral Mandates",
+        desc: "Regulatory Architecture, Deferral Rules & Sector-Specific Accounting Mandates",
+        simTitle: "Apex Shield Insurance: Module 03 Standards Sandbox",
+        simSubtitle: "Ensure regulatory compliance across AS 3, AS 13, AS 17, and Ind AS deferral guidelines.",
+        initialFinancials: { cash: 5000000, equity: 5000000, liab: 0, rev: 0 },
+        pills: ["Domain 1: Standard-Setting Architecture", "Domain 2: Dual Ecosystem (AS vs Ind AS)", "Domain 3: 3 Insurance Mandates", "Domain 4: Indian GAAP vs IFRS"],
+        outcomes: [
+          `<h2>Domain 1: Institutional Authority & Standard Setting</h2>
+           <p>ICAI's <strong>Accounting Standards Board (ASB)</strong> formulates standards, and <strong>MCA</strong> notifies them under Section 133 of Companies Act 2013[cite: 1].</p>`,
+          `<h2>Domain 2: Dual Ecosystem & Insurance Deferral</h2>
+           <p>India maintains <strong>27 active AS</strong> and <strong>39 converged Ind AS</strong>[cite: 1]. For insurers, Ind AS 109 and the Ind AS equivalent of IFRS 17 are deferred to implement simultaneously; insurers currently prepare accounts under AS only[cite: 1].</p>`,
+          `<h2>Domain 3: The 3 Non-Life Insurance Mandates</h2>
+           <ul>
+             <li><strong>AS 3 (Cash Flow):</strong> Insurers must use the <strong>Direct Method only</strong>[cite: 1].</li>
+             <li><strong>AS 13 (Investments):</strong> <strong>Exempt</strong>; insurers follow IRDAI Investment Regulations[cite: 1].</li>
+             <li><strong>AS 17 (Segment Reporting):</strong> <strong>Mandatory for all insurers</strong> regardless of listing or turnover[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 4: Indian GAAP vs. IFRS Framework</h2>
+           <p>In India, <strong>Statute overrides Standards</strong>[cite: 1]. Extraordinary items are permitted under AS 5 but prohibited under IAS 1[cite: 1].</p>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield prepares its annual Cash Flow Statement for IRDAI.",
+            question: "Under AS 3 and IRDAI accounting regulations, which presentation format must be implemented?",
+            choices: [
+              { text: "Direct Method exclusively", correct: true, cash: 0, equity: 0, liab: 0, rev: 0, explanation: "Correct! Insurance regulations specifically mandate the Direct Method only[cite: 1]." },
+              { text: "Indirect Method starting from Net Profit", correct: false, explanation: "Regulatory Violation: Standard corporate indirect method is not permitted for insurers[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: Which method must be used by insurance companies for cash flow statements under AS 3?", a: "Direct Method only", b: "Indirect Method only", c: "Either Direct or Indirect method", d: "Historical cost flow method", correct: "a", why: "IRDAI regulations specifically mandate the Direct Method[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: In case of direct conflict between an Indian Accounting Standard and a Statute:", a: "The provisions of the Statute / Law prevail over the Standard", b: "The Accounting Standard overrides the Law", c: "IFRS overrides both automatically", d: "The financial statements are nullified", correct: "a", why: "Under Indian GAAP, Statute overrides Accounting Standards[cite: 1]." }
+        ]
+      },
+      4: {
+        badge: "Master Curriculum Track • Module 04",
+        title: "Accounting Policies: Selection, Changes, AS 1 Disclosures & Insurance Reserving",
+        desc: "Measurement Bases, Retrospective Adjustments, and Non-Life Statutory Policy Disclosures",
+        simTitle: "Apex Shield Insurance: Module 04 Policy & Reserving Simulator",
+        simSubtitle: "Manage policy selection, statutory reserves (UPR & PDR), and mandatory AS 1 note disclosures.",
+        initialFinancials: { cash: 6000000, equity: 6000000, liab: 0, rev: 0 },
+        pills: ["Domain 1: Definition & Objectives", "Domain 2: Criteria for Policy Change", "Domain 3: AS 1 Disclosure Norms", "Domain 4: Non-Life Reserving"],
+        outcomes: [
+          `<h2>Domain 1: Nature & Strategic Objectives of Accounting Policies</h2>
+           <p>Accounting policies are specific principles, bases, conventions, rules, and practices applied by an enterprise in financial statements[cite: 1].</p>`,
+          `<h2>Domain 2: Criteria for Altering Accounting Policies</h2>
+           <p>Changes are permissible only: (1) for compliance with statute[cite: 1], (2) for compliance with an Accounting Standard[cite: 1], or (3) to reflect a truer/fairer presentation[cite: 1]. Changes must be applied retrospectively[cite: 1].</p>`,
+          `<h2>Domain 3: Disclosure Norms under AS 1</h2>
+           <p>All significant accounting policies and quantified financial impacts of any changes must be disclosed in the <strong>Notes to Accounts</strong>[cite: 1].</p>`,
+          `<h2>Domain 4: Non-Life Insurance Reserving Mandates</h2>
+           <ul>
+             <li><strong>Reserve for Unexpired Risk:</strong> 100% of Net Written Premium for Marine Hull; 50% (or 1/365th) for other classes[cite: 1].</li>
+             <li><strong>Premium Deficiency Reserve (PDR):</strong> Created when expected claims and expenses exceed unearned premium reserve[cite: 1].</li>
+           </ul>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield writes ₹20,00,000 in Marine Hull net written premiums.",
+            question: "Under statutory IRDAI accounting policies, what reserve must be created for unexpired risk?",
+            choices: [
+              { text: "Create 100% Reserve for Unexpired Risk (₹20,00,000) as a statutory liability", correct: true, cash: 0, equity: -2000000, liab: 2000000, rev: -2000000, explanation: "Correct! Marine Hull requires 100% net written premium unexpired risk reserve[cite: 1]." },
+              { text: "Create 50% unearned reserve (₹10,00,000)", correct: false, explanation: "Regulatory Violation: Marine Hull is strictly 100%[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: Statutory Reserve for Unexpired Risk for Marine Hull business is maintained at:", a: "100% of Net Written Premium", b: "50% of Net Premium", c: "1/365th of gross premium", d: "20% of net incurred claims", correct: "a", why: "IRDAI mandates 100% unexpired risk reserve on Marine Hull[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: A voluntary change in accounting policy must normally be accounted for:", a: "Retrospectively", b: "Prospectively over 10 years", c: "As direct write-off against capital", d: "Only upon liquidation", correct: "a", why: "Policy alterations are applied retrospectively with past recomputations adjusted[cite: 1]." }
+        ]
+      },
+      5: {
+        badge: "Master Curriculum Track • Module 05",
+        title: "Accounting Process: Book-keeping, Golden Rules & Account Classifications",
+        desc: "Double Entry Mechanics, Personal/Real/Nominal Rules, and Primary vs Subsidiary Books",
+        simTitle: "Apex Shield Insurance: Module 05 Journalising & Ledger Simulator",
+        simSubtitle: "Classify transactions, apply the golden rules, and balance debit/credit ledger flows.",
+        initialFinancials: { cash: 1000000, equity: 1000000, liab: 0, rev: 0 },
+        pills: ["Domain 1: 6 Stages of Accounting Process", "Domain 2: Double Entry Mechanics", "Domain 3: Account Classification & Golden Rules", "Domain 4: Principal vs Subsidiary Books"],
+        outcomes: [
+          `<h2>Domain 1: Six Stages of the Accounting Process</h2>
+           <ol>
+             <li>Recording financial transactions in Journal under proper accounts[cite: 1].</li>
+             <li>Posting journal entries to respective Ledger accounts[cite: 1].</li>
+             <li>Balancing of ledger accounts[cite: 1].</li>
+             <li>Preparation of Trial Balance[cite: 1].</li>
+             <li>Preparation of Profit and Loss accounts (Revenue Accounts in Insurance)[cite: 1].</li>
+             <li>Preparation of Balance Sheet[cite: 1].</li>
+           </ol>`,
+          `<h2>Domain 2: Double Entry Mechanics & Accounting Equation</h2>
+           <p>Double entry book-keeping was codified in the 15th century by Luca Pacioli[cite: 1]. Every transaction has two aspects: a <strong>Debit (Dr.)</strong> leg and a <strong>Credit (Cr.)</strong> leg[cite: 1].</p>
+           <div class="callout">
+             <code>Assets = Liabilities + Capital</code>[cite: 1]
+           </div>`,
+          `<h2>Domain 3: Account Classification & Golden Rules of Accounting</h2>
+           <table>
+             <thead><tr><th>Account Type</th><th>Nature & Scope</th><th>Debit Rule</th><th>Credit Rule</th></tr></thead>
+             <tbody>
+               <tr><td><strong>Personal</strong></td><td>Individuals, firms, corporate bodies, representative accounts (Capital, Drawings)[cite: 1].</td><td><strong>Debit the receiver</strong>[cite: 1]</td><td><strong>Credit the giver</strong>[cite: 1]</td></tr>
+               <tr><td><strong>Real</strong></td><td>Tangible assets (Cash, Buildings) and Intangible assets (Goodwill, Patents)[cite: 1].</td><td><strong>Debit what comes in</strong>[cite: 1]</td><td><strong>Credit what goes out</strong>[cite: 1]</td></tr>
+               <tr><td><strong>Nominal</strong></td><td>Expenses, losses, incomes, gains, premium received, claims paid[cite: 1].</td><td><strong>Debit all expenses & losses</strong>[cite: 1]</td><td><strong>Credit all incomes & gains</strong>[cite: 1]</td></tr>
+             </tbody>
+           </table>`,
+          `<h2>Domain 4: Principal vs. Subsidiary Books & Capital vs. Revenue</h2>
+           <ul>
+             <li><strong>Subsidiary Books (Prime Entry):</strong> Sales Day Book, Purchase Day Book, Cash Book, Bills Receivable/Payable books[cite: 1].</li>
+             <li><strong>Principal Books:</strong> Ledgers where individual balances are grouped and balanced[cite: 1].</li>
+             <li><strong>Capital vs. Revenue:</strong> Capital transactions yield benefits beyond one accounting cycle (Balance Sheet)[cite: 1]; Revenue transactions are exhausted within the period (P&L / Revenue A/c)[cite: 1].</li>
+           </ul>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield pays an office telephone and internet bill of ₹5,000 via cash.",
+            question: "Applying the Golden Rules, what is the correct journal entry?",
+            choices: [
+              { text: "Debit Telephone Expense A/c (Nominal) ₹5,000 | Credit Cash A/c (Real) ₹5,000", correct: true, cash: -5000, equity: -5000, liab: 0, rev: -5000, explanation: "Correct! Nominal rule: Debit all expenses; Real rule: Credit what goes out[cite: 1]." },
+              { text: "Debit Cash A/c ₹5,000 | Credit Telephone Expense A/c ₹5,000", correct: false, explanation: "Error: Inverted debit/credit rules[cite: 1]." }
+            ]
+          },
+          {
+            scenario: "The insurer receives ₹1,000 interest on bank fixed deposits[cite: 1].",
+            question: "Applying the Golden Rules, what is the correct journal entry?[cite: 1]",
+            choices: [
+              { text: "Debit Bank/Cash A/c (Real) ₹1,000 | Credit Interest Income A/c (Nominal) ₹1,000", correct: true, cash: 1000, equity: 1000, liab: 0, rev: 1000, explanation: "Correct! Real rule: Debit what comes in; Nominal rule: Credit all incomes and gains[cite: 1]." },
+              { text: "Debit Interest Income A/c ₹1,000 | Credit Bank A/c ₹1,000", correct: false, explanation: "Error: Income must be credited, asset inflow must be debited[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: Goodwill is classified under which type of account?", a: "Real Account (Intangible)", b: "Personal Account", c: "Nominal Account", d: "Representative Personal Account", correct: "a", why: "Goodwill is an intangible asset, classified as a Real Account[cite: 1]." },
+          { q: "Drill 2: The golden rule 'Debit the receiver, Credit the giver' applies to:", a: "Personal Accounts", b: "Real Accounts", c: "Nominal Accounts", d: "Cash Book only", correct: "a", why: "Personal accounts govern relationships with natural, artificial, or representative persons[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: Returns of purchased goods are recorded in which subsidiary book?", a: "Purchases Return / Returns Outward Book", b: "Sales Return / Returns Inward Book", c: "Journal Proper", d: "Bills Payable Book", correct: "a", why: "Purchases returns to suppliers are entered in Returns Outward Book[cite: 1]." },
+          { q: "Assessment 2: In bookkeeping, what is the very first step in systematic recording?", a: "Journalising transactions in debit/credit format", b: "Ledger account balancing", c: "Preparation of Trial Balance", d: "Drafting the Balance Sheet", correct: "a", why: "Transactions are recorded first in primary books (Journals) before ledger posting[cite: 1]." }
+        ]
+      },
+      6: {
+        badge: "Master Curriculum Track • Module 06",
+        title: "Accounting Methods, Procedures & Preparation of Final Accounts",
+        desc: "Cash vs Accrual, Multi-Column Cash Books, Trial Balance & Financial Statements",
+        simTitle: "Apex Shield Insurance: Module 06 Final Accounts Simulator",
+        simSubtitle: "Execute contra entries, balance cash books, compile trial balances, and prepare final P&L / Balance Sheets.",
+        initialFinancials: { cash: 2000000, equity: 2000000, liab: 0, rev: 0 },
+        pills: ["Domain 1: Cash vs Accrual Method", "Domain 2: Multi-Column Cash Book & Contra Entries", "Domain 3: Trial Balance Extraction", "Domain 4: Final Accounts & Adjustments"],
+        outcomes: [
+          `<h2>Domain 1: Cash Basis vs. Accrual Basis Accounting</h2>
+           <ul>
+             <li><strong>Cash Basis:</strong> Income recorded on fund receipt, expenses recorded on payment[cite: 1]. Fails to match revenue with period[cite: 1].</li>
+             <li><strong>Accrual Basis:</strong> Recognises revenues when earned and expenses when incurred, regardless of cash flow timing[cite: 1]. Required by GAAP, IFRS, and Companies Act[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 2: Double Column Cash Book & Contra Entries</h2>
+           <p>Combines Cash and Bank columns side by side[cite: 1].</p>
+           <div class="callout">
+             <strong>Contra Entry ('C'):</strong> Occurs when a transaction involves both Cash and Bank (e.g. cash deposited into bank or cash withdrawn from bank for office use)[cite: 1]. Recorded on both Receipt and Payment sides simultaneously[cite: 1].
+           </div>`,
+          `<h2>Domain 3: Trial Balance Objectives & Error Detection</h2>
+           <p>A list of closing balances of all ledger accounts on a specified date[cite: 1]. Confirms arithmetical accuracy (Total Debits = Total Credits)[cite: 1].</p>`,
+          `<h2>Domain 4: Drafting Final Accounts (Trading, P&L, Balance Sheet)</h2>
+           <ul>
+             <li><strong>Trading Account:</strong> Direct expenses and revenues yielding Gross Profit/Loss[cite: 1].</li>
+             <li><strong>Profit & Loss Account:</strong> Administrative overheads, finance costs, and net operating profit[cite: 1].</li>
+             <li><strong>Balance Sheet:</strong> Financial position snapshot: <code>Assets = Liabilities + Equity</code>[cite: 1].</li>
+           </ul>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield withdraws ₹20,000 cash from its bank account for branch petty cash operational use[cite: 1].",
+            question: "How is this contra transaction recorded in the Double Column Cash Book?[cite: 1]",
+            choices: [
+              { text: "Debit Cash column ₹20,000 (Receipt side) | Credit Bank column ₹20,000 (Payment side) marked 'C'", correct: true, cash: 0, equity: 0, liab: 0, rev: 0, explanation: "Correct! Contra entry shifts funds between cash and bank without altering total liquid assets[cite: 1]." },
+              { text: "Debit Bank column ₹20,000 | Credit Petty Admin Expense ₹20,000", correct: false, explanation: "Error: Transferring funds to petty cash is an asset reclassification, not an immediate expense[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: In a double column cash book, contra entries are recorded in:", a: "Both Cash and Bank columns", b: "Cash column only", c: "Bank column only", d: "Journal Proper only", correct: "a", why: "Contra transactions affect cash on one side and bank on the opposing side[cite: 1]." },
+          { q: "Drill 2: A credit balance in which of the following accounts indicates a likely error?", a: "Claims Incurred Account", b: "Share Capital Account", c: "Premium Received Account", d: "Accumulated Depreciation", correct: "a", why: "Claims incurred are expense/loss items and must carry a debit balance[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: Which of the following errors will NOT affect Trial Balance arithmetical equality?", a: "Posting an amount to the wrong account but on the correct debit/credit side", b: "Incorrect addition of ledger balances", c: "Omitting one leg of a double entry transaction", d: "Entering unequal debit and credit figures", correct: "a", why: "Posting to the correct side preserves total debit and credit equality[cite: 1]." }
+        ]
+      },
+      7: {
+        badge: "Master Curriculum Track • Module 07",
+        title: "Depreciation Accounting: Methods, Computations & Companies Act Schedule II",
+        desc: "Straight Line, WDV, Retrospective Adjustments & Useful Life Component Approach",
+        simTitle: "Apex Shield Insurance: Module 07 Depreciation Simulator",
+        simSubtitle: "Calculate SLM/WDV schedules, record asset disposal gains/losses, and apply Schedule II rules.",
+        initialFinancials: { cash: 10000000, equity: 10000000, liab: 0, rev: 0 },
+        pills: ["Domain 1: Definition & Causes", "Domain 2: SLM vs WDV Methods", "Domain 3: Accounting for Asset Disposals", "Domain 4: Companies Act 2013 Schedule II"],
+        outcomes: [
+          `<h2>Domain 1: Meaning, Objectives & Causes of Depreciation</h2>
+           <p>Depreciation is the systematic allocation of the depreciable amount of an asset over its estimated useful life[cite: 1].</p>
+           <ul>
+             <li><strong>Causes:</strong> Physical wear and tear[cite: 1], effluxion of time[cite: 1], obsolescence through tech changes[cite: 1].</li>
+             <li><strong>Exclusion:</strong> Freehold Land is non-depreciable because it has an unlimited useful life[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 2: Depreciation Methods (SLM vs. WDV)</h2>
+           <table>
+             <thead><tr><th>Method</th><th>Formula / Basis</th><th>Annual Charge Trend</th></tr></thead>
+             <tbody>
+               <tr><td><strong>Straight Line (SLM)</strong>[cite: 1]</td><td><code>(Cost - Salvage) / Useful Life</code>[cite: 1]</td><td>Constant fixed amount every year[cite: 1].</td></tr>
+               <tr><td><strong>Written Down Value (WDV)</strong>[cite: 1]</td><td>Fixed percentage applied to diminishing book value[cite: 1]</td><td>Declining charge over asset life[cite: 1].</td></tr>
+             </tbody>
+           </table>`,
+          `<h2>Domain 3: Asset Disposal & Profit/Loss Computation</h2>
+           <div class="callout">
+             <code>Book Value (WDV) = Cost - Accumulated Depreciation</code>[cite: 1]<br>
+             <code>Disposal Result = Sale Proceeds - WDV at Sale Date</code>[cite: 1]
+           </div>`,
+          `<h2>Domain 4: Depreciation under Companies Act 2013 (Schedule II)</h2>
+           <p>Schedule II mandates depreciation based on <strong>Useful Life</strong> rather than arbitrary statutory rates[cite: 1], introducing the <em>component approach</em> aligned with Ind AS 16[cite: 1]. Dividends can only be paid out of profits after providing for depreciation under Section 123[cite: 1].</p>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield purchases computing machinery for ₹11,00,000 with a useful life of 5 years and estimated salvage value of ₹1,00,000[cite: 1].",
+            question: "Under Straight Line Method (SLM), what is the annual depreciation charge?[cite: 1]",
+            choices: [
+              { text: "₹2,00,000 per year [(₹11,00,000 - ₹1,00,000) / 5 years]", correct: true, cash: 0, equity: -200000, liab: 0, rev: -200000, explanation: "Correct! Depreciable amount is ₹10L spread evenly over 5 years = ₹2,00,000 p.a.[cite: 1]" },
+              { text: "₹2,20,000 per year (₹11,00,000 / 5 years without salvage deduction)", correct: false, explanation: "Calculation Error: Salvage value must be subtracted from historical cost before dividing by useful life[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: Under the Companies Act 2013 Schedule II, the basis of charging depreciation is:", a: "Useful economic life of the asset", b: "Fixed rate specified by income tax tables", c: "Discretionary lump sum write-off", d: "Market replacement quotation", correct: "a", why: "Schedule II requires systematic allocation across the specified useful life of individual asset classes[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: An asset costing ₹10,000 with accumulated depreciation of ₹8,000 is sold for ₹3,000[cite: 1]. What is the gain/loss?[cite: 1]", a: "Profit on sale of ₹1,000", b: "Loss on sale of ₹1,000", c: "Profit on sale of ₹3,000", d: "No profit or loss", correct: "a", why: "WDV = ₹10,000 - ₹8,000 = ₹2,000[cite: 1]. Sale proceeds ₹3,000 - WDV ₹2,000 = ₹1,000 profit[cite: 1]." }
+        ]
+      },
+      8: {
+        badge: "Master Curriculum Track • Module 08",
+        title: "Bank Reconciliation Statement: Internal Controls, Timing Differences & Audit Trail",
+        desc: "Cash Book vs Pass Book Reconciliation, Dishonoured Cheques & Fraud Prevention",
+        simTitle: "Apex Shield Insurance: Module 08 BRS Simulator",
+        simSubtitle: "Reconcile unpresented cheques, uncleared deposits, direct collections, and bank charges.",
+        initialFinancials: { cash: 46100, equity: 46100, liab: 0, rev: 0 },
+        pills: ["Domain 1: Definition & Strategic Importance", "Domain 2: Timing Differences", "Domain 3: Recording Errors & Dishonour", "Domain 4: Step-by-Step BRS Process"],
+        outcomes: [
+          `<h2>Domain 1: Definition & Internal Control Importance</h2>
+           <p>A Bank Reconciliation Statement (BRS) reconciles differences between the bank balance in the Cash Book (Bank Account) and the balance on the Bank Statement (Pass Book)[cite: 1].</p>
+           <ul>
+             <li><strong>Fraud Prevention:</strong> Regular BRS prevents embezzlement and detects unauthorized withdrawals[cite: 1].</li>
+             <li><strong>Nature:</strong> BRS is a memorandum statement, not an account, and is not part of the double entry ledger system[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 2: Timing Differences</h2>
+           <ul>
+             <li><strong>Cheques issued but not presented:</strong> Cash book reduced immediately; pass book unchanged (Add back to cash book balance)[cite: 1].</li>
+             <li><strong>Cheques deposited but not credited:</strong> Cash book increased immediately; pass book unchanged (Deduct from cash book balance)[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 3: Direct Debits, Credits & Errors</h2>
+           <ul>
+             <li><strong>Direct Collections (Dividends/Interest):</strong> Credited by bank first (Add to cash book)[cite: 1].</li>
+             <li><strong>Bank Charges / Overdraft Interest:</strong> Debited by bank first (Deduct from cash book)[cite: 1].</li>
+             <li><strong>Dishonoured Cheques:</strong> Debited back by bank (Deduct from cash book)[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 4: Standard BRS Drafting Format</h2>
+           <div class="callout">
+             <code>Cash Book Balance + Unpresented Cheques + Direct Bank Credits - Uncleared Deposits - Bank Charges/Dishonours = Bank Statement Balance</code>[cite: 1]
+           </div>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield's Cash Book shows ₹46,100 balance[cite: 1]. ₹63,000 cheques issued are not yet presented to bank, and ₹25,000 deposits are uncleared[cite: 1].",
+            question: "How do you adjust the Cash Book balance to reach the Bank Statement balance?[cite: 1]",
+            choices: [
+              { text: "Add unpresented cheques ₹63,000, Deduct uncleared deposits ₹25,000 (Result: ₹84,100)", correct: true, cash: 38000, equity: 38000, liab: 0, rev: 0, explanation: "Correct! Issued cheques increased bank balance relative to books; uncleared deposits decreased it[cite: 1]." },
+              { text: "Deduct unpresented cheques ₹63,000, Add uncleared deposits ₹25,000", correct: false, explanation: "Reconciliation Error: Inverted timing adjustments[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: A bank reconciliation statement is:", a: "A statement prepared by the entity to reconcile cash book and pass book balances", b: "A permanent ledger account in double entry", c: "A tax return filed with the government", d: "A summary of bad debts", correct: "a", why: "BRS is an explanatory control statement prepared by the enterprise[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: A cheque issued to a supplier that has not yet appeared on the bank statement is called:", a: "An unpresented / outstanding cheque", b: "A dishonoured cheque", c: "A stale cheque", d: "A credit transfer", correct: "a", why: "Cheques issued by the firm but pending clearance at payee banks are unpresented cheques[cite: 1]." }
+        ]
+      },
+      9: {
+        badge: "Master Curriculum Track • Module 09",
+        title: "Introduction to Company Accounts: Companies Act 2013 & Schedule III",
+        desc: "Corporate Features, Share Capital Classifications, Statutory Formats & Final Accounts",
+        simTitle: "Apex Shield Insurance: Module 09 Corporate Accounts Simulator",
+        simSubtitle: "Manage share capital structures, classify long-term debt, and construct Schedule III financial statements.",
+        initialFinancials: { cash: 25000000, equity: 25000000, liab: 0, rev: 0 },
+        pills: ["Domain 1: Company Features & Types", "Domain 2: Share Capital Classification", "Domain 3: Statutory Provisions (Sec 128-134)", "Domain 4: Schedule III Statement Formats"],
+        outcomes: [
+          `<h2>Domain 1: Corporate Entity Salient Features & Types</h2>
+           <ul>
+             <li><strong>Salient Features:</strong> Incorporation by law[cite: 1], Separate Legal Entity[cite: 1], Perpetual Succession[cite: 1], Limited Liability[cite: 1], Common Seal[cite: 1].</li>
+             <li><strong>Government Company:</strong> A company where not less than 51% of paid-up capital is held by Central/State Governments (e.g. New India, National, Oriental, United India)[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 2: Hierarchy of Share Capital</h2>
+           <ol>
+             <li><strong>Authorised Capital:</strong> Maximum capital authorized by Memorandum[cite: 1].</li>
+             <li><strong>Issued Capital:</strong> Part of authorized capital offered to shareholders[cite: 1].</li>
+             <li><strong>Subscribed Capital:</strong> Value of shares promised by investors[cite: 1].</li>
+             <li><strong>Called-up & Paid-up Capital:</strong> Aggregate funds actually received from shareholders[cite: 1].</li>
+           </ol>`,
+          `<h2>Domain 3: Core Statutory Provisions (Companies Act 2013)</h2>
+           <ul>
+             <li><strong>Sec 128:</strong> Proper books of accounts kept at registered office on accrual and double-entry basis for at least 8 preceding financial years[cite: 1].</li>
+             <li><strong>Sec 129:</strong> Financial statements must exhibit a true and fair view and comply with notified standards (Schedule III format)[cite: 1].</li>
+             <li><strong>Sec 134:</strong> Approval of statements by Board of Directors before submission to auditors[cite: 1].</li>
+           </ul>`,
+          `<h2>Domain 4: Schedule III Financial Statement Structure</h2>
+           <p>Schedule III provides the vertical presentation format for the Balance Sheet (Equity & Liabilities vs Assets) and Statement of Profit & Loss[cite: 1]. Insurance companies are exempt from standard Schedule III and follow IRDAI specific formats under Insurance Act 1938[cite: 1].</p>`
+        ],
+        simSteps: [
+          {
+            scenario: "Apex Shield issues ₹50,00,000 in 10% Debentures and secures a ₹64,50,000 Bank Loan[cite: 1].",
+            question: "Under Schedule III of the Companies Act 2013, how are these balances grouped?[cite: 1]",
+            choices: [
+              { text: "Group under Non-Current Liabilities -> Long-Term Borrowings (Total: ₹1,14,50,000)", correct: true, cash: 11450000, equity: 0, liab: 11450000, rev: 0, explanation: "Correct! Debentures and bank loans are long-term non-current borrowing obligations[cite: 1]." },
+              { text: "Group under Current Liabilities -> Trade Payables", correct: false, explanation: "Classification Error: Long-term debt obligations must be classified under Non-Current Borrowings[cite: 1]." }
+            ]
+          }
+        ],
+        tyQuestions: [
+          { q: "Drill 1: Under Section 128 of the Companies Act 2013, company books of accounts must be preserved for at least:", a: "8 Financial Years", b: "5 Financial Years", c: "10 Financial Years", d: "12 Financial Years", correct: "a", why: "Section 128(5) prescribes a mandatory retention period of at least 8 preceding financial years[cite: 1]." }
+        ],
+        examQuestions: [
+          { q: "Assessment 1: At every Annual General Meeting (AGM), the financial statements are laid before the shareholders by:", a: "The Board of Directors", b: "The Statutory Auditor", c: "The Company Secretary", d: "The Chief Accountant", correct: "a", why: "Under Section 129(2), the Board of Directors lays the financial statements before the AGM[cite: 1]." }
+        ]
+      }
+    };
+
+    let currentModuleId = 1;
+    let currentSimStep = 0;
+    let simFinancials = { cash: 0, equity: 0, liab: 0, rev: 0 };
+
+    function loadModule(modId) {
+      currentModuleId = modId;
+      const mod = modules[modId];
+      
+      document.getElementById('module-badge').innerText = mod.badge;
+      document.getElementById('module-title').innerText = mod.title;
+      document.getElementById('module-desc').innerText = mod.desc;
+      document.getElementById('sim-title').innerText = mod.simTitle;
+      document.getElementById('sim-subtitle').innerText = mod.simSubtitle;
+
+      const pillsContainer = document.getElementById('topic-pills-container');
+      let pillsHtml = '';
+      mod.pills.forEach((p, idx) => {
+        pillsHtml += `<button class="topic-pill ${idx === 0 ? 'active' : ''}" onclick="showOutcome(${idx + 1})">${p}</button>`;
+      });
+      pillsContainer.innerHTML = pillsHtml;
+
+      const learnContent = document.getElementById('learn-content-container');
+      let outcomesHtml = '';
+      mod.outcomes.forEach((content, idx) => {
+        outcomesHtml += `<div id="outcome-${idx + 1}" class="outcome-section" style="${idx === 0 ? 'display:block;' : 'display:none;'}">${content}</div>`;
+      });
+      learnContent.innerHTML = outcomesHtml;
+
+      currentSimStep = 0;
+      simFinancials = { ...mod.initialFinancials };
+      renderSim();
+
+      renderTY();
+      renderExam();
+
+      switchTab('learn');
+    }
+
+    function renderSim() {
+      document.getElementById('val-cash').innerText = '₹' + simFinancials.cash.toLocaleString('en-IN');
+      document.getElementById('val-equity').innerText = '₹' + simFinancials.equity.toLocaleString('en-IN');
+      document.getElementById('val-liab').innerText = '₹' + simFinancials.liab.toLocaleString('en-IN');
+      document.getElementById('val-rev').innerText = '₹' + simFinancials.rev.toLocaleString('en-IN');
+
+      const container = document.getElementById('sim-content');
+      const mod = modules[currentModuleId];
+      const step = mod.simSteps[currentSimStep];
+
+      if (!step) {
+        container.innerHTML = `
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; border-radius: 8px; text-align: center;">
+            <h3 style="color: #166534; margin: 0 0 8px;">🎉 Simulation Lab Complete!</h3>
+            <p>You have successfully balanced the ledger entries for this module.</p>
+            <button class="primary-btn" onclick="currentSimStep=0; simFinancials={...modules[currentModuleId].initialFinancials}; renderSim();">Restart Lab</button>
+          </div>
+        `;
+        return;
+      }
+
+      let html = `
+        <p style="color: var(--primary-accent); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Scenario Stage ${currentSimStep + 1} of ${mod.simSteps.length}</p>
+        <p style="font-size: 1rem; font-weight: 600; margin-bottom: 8px;">${step.scenario}</p>
+        <p style="color: #475569; margin-bottom: 14px;"><em>${step.question}</em></p>
+      `;
+
+      step.choices.forEach((c, idx) => {
+        html += `<button class="btn" onclick="handleSimChoice(${idx})">${c.text}</button>`;
+      });
+      html += `<div id="sim-feedback" class="feedback" style="display:none;"></div>`;
+      container.innerHTML = html;
+    }
+
+    function handleSimChoice(idx) {
+      const mod = modules[currentModuleId];
+      const step = mod.simSteps[currentSimStep];
+      const choice = step.choices[idx];
+      const fb = document.getElementById('sim-feedback');
+      fb.style.display = 'block';
+      fb.className = 'feedback ' + (choice.correct ? 'correct' : 'incorrect');
+
+      if (choice.correct) {
+        simFinancials.cash += choice.cash;
+        simFinancials.equity += choice.equity;
+        simFinancials.liab += choice.liab;
+        simFinancials.rev += choice.rev;
+        fb.innerHTML = `${choice.explanation}<br><button class="primary-btn" onclick="currentSimStep++; renderSim();">Proceed to Next Stage →</button>`;
+      } else {
+        fb.innerHTML = choice.explanation;
+      }
+    }
+
+    function renderTY() {
+      const target = document.getElementById('ty-container');
+      const mod = modules[currentModuleId];
+      let html = '';
+      mod.tyQuestions.forEach((q, idx) => {
+        html += `
+          <div style="margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+            <p style="font-weight: 600; margin-bottom: 8px;">${q.q}</p>
+            <button class="btn" onclick="checkTYQ(${idx}, 'a')">A) ${q.a}</button>
+            <button class="btn" onclick="checkTYQ(${idx}, 'b')">B) ${q.b}</button>
+            <button class="btn" onclick="checkTYQ(${idx}, 'c')">C) ${q.c}</button>
+            <button class="btn" onclick="checkTYQ(${idx}, 'd')">D) ${q.d}</button>
+            <div id="ty-fb-${idx}" class="feedback" style="display:none;"></div>
+          </div>
+        `;
+      });
+      target.innerHTML = html;
+    }
+
+    function checkTYQ(idx, selected) {
+      const q = modules[currentModuleId].tyQuestions[idx];
+      const fb = document.getElementById(`ty-fb-${idx}`);
+      fb.style.display = 'block';
+      if (selected === q.correct) {
+        fb.className = 'feedback correct';
+        fb.innerHTML = `<strong>✓ Correct!</strong> ${q.why}`;
+      } else {
+        fb.className = 'feedback incorrect';
+        fb.innerHTML = `<strong>✗ Incorrect.</strong> ${q.why}`;
+      }
+    }
+
+    function renderExam() {
+      const target = document.getElementById('exam-container');
+      const mod = modules[currentModuleId];
+      let html = '';
+      mod.examQuestions.forEach((q, idx) => {
+        html += `
+          <div style="margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+            <p style="font-weight: 600; margin-bottom: 8px;">${q.q}</p>
+            <button class="btn" onclick="checkExamQ(${idx}, 'a')">A) ${q.a}</button>
+            <button class="btn" onclick="checkExamQ(${idx}, 'b')">B) ${q.b}</button>
+            <button class="btn" onclick="checkExamQ(${idx}, 'c')">C) ${q.c}</button>
+            <button class="btn" onclick="checkExamQ(${idx}, 'd')">D) ${q.d}</button>
+            <div id="exam-fb-${idx}" class="feedback" style="display:none;"></div>
+          </div>
+        `;
+      });
+      target.innerHTML = html;
+    }
+
+    function checkExamQ(idx, selected) {
+      const q = modules[currentModuleId].examQuestions[idx];
+      const fb = document.getElementById(`exam-fb-${idx}`);
+      fb.style.display = 'block';
+      if (selected === q.correct) {
+        fb.className = 'feedback correct';
+        fb.innerHTML = `<strong>✓ Correct!</strong> ${q.why}`;
+      } else {
+        fb.className = 'feedback incorrect';
+        fb.innerHTML = `<strong>✗ Incorrect.</strong> ${q.why}`;
+      }
+    }
+
+    loadModule('1');
+  </script>
+</body>
+</html>
