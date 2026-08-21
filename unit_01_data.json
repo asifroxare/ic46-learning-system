@@ -1,0 +1,79 @@
+{
+  "unitId": "IC46_UNIT_01",
+  "title": "Apex Shield Financial Initialization",
+  "initialState": {
+    "cash": 0,
+    "liabilities": 0,
+    "equity": 0,
+    "revenue": 0,
+    "expenses": 0,
+    "currentStage": 1,
+    "score": 0,
+    "misconceptionsLogged": []
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "scenario": "Promoter contributes ₹50,00,000 personal savings into Apex Shield's corporate bank account.",
+      "question": "How should this transaction be recorded in Apex Shield's books?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Increase Cash (Asset) by ₹50L, Increase Capital (Equity) by ₹50L",
+          "isCorrect": true,
+          "financialImpact": { "cash": 5000000, "equity": 5000000 },
+          "feedback": "Correct. Under the Business Entity Concept, the company is distinct from its promoter."
+        },
+        {
+          "id": "B",
+          "text": "No entry required as it is the promoter's personal fund",
+          "isCorrect": false,
+          "misconception": "MIS_ENTITY_CONCEPT_IGNORED",
+          "feedback": "Incorrect. Once transferred to the company, it becomes corporate capital."
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "scenario": "Apex Shield hires a highly rated Chief Underwriter with an annual CTC of ₹25,00,000.",
+      "question": "What journal entry is required on the day the appointment letter is signed?",
+      "options": [
+        {
+          "id": "A",
+          "text": "No financial entry recorded today",
+          "isCorrect": true,
+          "financialImpact": {},
+          "feedback": "Correct. Under the Money Measurement Concept, contracts or talent are not recorded until a monetary transaction/obligation occurs."
+        },
+        {
+          "id": "B",
+          "text": "Debit Human Asset ₹25L, Credit Salary Payable ₹25L",
+          "isCorrect": false,
+          "misconception": "MIS_MONEY_MEASUREMENT_VIOLATION",
+          "feedback": "Incorrect. Accounting records only quantifiable monetary transactions, not future unperformed service contracts."
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "scenario": "Received ₹12,00,000 annual policy premium in advance for fire insurance policies starting next month.",
+      "question": "How should this cash receipt be classified immediately upon receipt?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Increase Cash ₹12L, Increase Unearned Premium / Advance (Liability) ₹12L",
+          "isCorrect": true,
+          "financialImpact": { "cash": 1200000, "liabilities": 1200000 },
+          "feedback": "Correct. Under the Accrual and Realisation concepts, premium received before risk commencement is a liability."
+        },
+        {
+          "id": "B",
+          "text": "Increase Cash ₹12L, Increase Premium Revenue ₹12L",
+          "isCorrect": false,
+          "misconception": "MIS_ACCRUAL_RECOGNITION_ERROR",
+          "feedback": "Incorrect. Premium cannot be recognized as earned revenue until the insurance coverage period begins."
+        }
+      ]
+    }
+  ]
+}

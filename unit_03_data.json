@@ -1,0 +1,81 @@
+{
+  "unit": "Unit 3: Accounting Standards - AS & Ind AS",
+  "learning_outcomes": [
+    "Institutional framework and standard-setting authority (ICAI & MCA)",
+    "Comparison of AS vs Ind AS vs IFRS",
+    "Applicability, deferral rules, and specific mandates for the insurance sector",
+    "Conceptual differences between Indian GAAP and IFRS"
+  ],
+  "key_takeaways": [
+    "The Accounting Standards Board (ASB) of ICAI formulates Accounting Standards; the Ministry of Corporate Affairs (MCA) notifies them under Section 133 of the Companies Act, 2013.",
+    "India operates a dual accounting system: 27 active Accounting Standards (AS) under Companies (AS) Rules, 2021 and 39 converged Indian Accounting Standards (Ind AS) aligned with IFRS.",
+    "Per IRDAI directives, the implementation of Ind AS 109 and the Ind AS equivalent of IFRS 17 is deferred to roll out simultaneously; insurers presently prepare financial statements under AS only.",
+    "Insurance Mandate 1 (AS 3 - Cash Flow Statements): Insurers must prepare Cash Flow Statements using the Direct Method only.",
+    "Insurance Mandate 2 (AS 13 - Accounting for Investments): Non-life insurers are exempt from AS 13 and follow IRDAI Investment Regulations instead.",
+    "Insurance Mandate 3 (AS 17 - Segment Reporting): Mandatory for all insurance companies irrespective of listing status or turnover thresholds.",
+    "Under Indian GAAP, statutory law overrides Accounting Standards in case of conflict; IFRS prioritizes substance over legal form.",
+    "Extraordinary items are permitted and required to be shown separately under AS 5, but are strictly prohibited from separate line-item presentation under IAS 1 / Ind AS."
+  ],
+  "self_test_questions": [
+    {
+      "id": "u03_q01",
+      "question": "Which body is responsible for formulating Accounting Standards in India?",
+      "options": [
+        "IRDAI",
+        "Accounting Standards Board (ASB) of ICAI",
+        "Reserve Bank of India",
+        "Ministry of Finance"
+      ],
+      "correct_answer": "Accounting Standards Board (ASB) of ICAI",
+      "explanation": "The Accounting Standards Board (ASB), constituted by the Council of the Institute of Chartered Accountants of India (ICAI) in 1977, formulates the standards."
+    },
+    {
+      "id": "u03_q02",
+      "question": "Which method is mandatory for insurance companies when preparing cash flow statements under AS 3?",
+      "options": [
+        "Indirect Method",
+        "Direct Method",
+        "Proportionate Method",
+        "Accrual Flow Method"
+      ],
+      "correct_answer": "Direct Method",
+      "explanation": "IRDAI regulations require insurance companies to prepare cash flow statements using the Direct Method exclusively."
+    },
+    {
+      "id": "u03_q03",
+      "question": "Why are Indian general insurance companies currently exempt from AS 13 (Accounting for Investments)?",
+      "options": [
+        "They do not hold investment portfolios",
+        "They follow separate IRDAI Investment Regulations",
+        "Investments are accounted under AS 30",
+        "Investments are marked only at historical cost"
+      ],
+      "correct_answer": "They follow separate IRDAI Investment Regulations",
+      "explanation": "Insurers are governed by specific IRDAI (Investment) Regulations for investment valuation and presentation rather than AS 13."
+    },
+    {
+      "id": "u03_q04",
+      "question": "Which standard mandates segment reporting for all insurers irrespective of listing status or turnover?",
+      "options": [
+        "AS 17",
+        "AS 18",
+        "AS 24",
+        "AS 25"
+      ],
+      "correct_answer": "AS 17",
+      "explanation": "AS 17 (Segment Reporting) applies compulsorily to all insurance entities regardless of size or listing criteria."
+    },
+    {
+      "id": "u03_q05",
+      "question": "How are extraordinary items treated under AS 5 compared to IAS 1?",
+      "options": [
+        "Prohibited under AS 5, permitted under IAS 1",
+        "Permitted and disclosed separately under AS 5, prohibited under IAS 1",
+        "Treated identically under both frameworks",
+        "Ignored in both frameworks"
+      ],
+      "correct_answer": "Permitted and disclosed separately under AS 5, prohibited under IAS 1",
+      "explanation": "AS 5 requires separate disclosure of extraordinary items on the face of the P&L account, whereas IAS 1 explicitly prohibits any items from being presented as extraordinary."
+    }
+  ]
+}

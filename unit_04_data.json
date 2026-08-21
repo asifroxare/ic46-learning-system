@@ -1,0 +1,81 @@
+{
+  "unit": "Unit 4: Accounting Policies",
+  "learning_outcomes": [
+    "Accounting policies and their objectives",
+    "Conditions and accounting treatment for changes in accounting policies",
+    "Disclosure requirements under AS 1",
+    "Accounting policies generally applicable to non-life insurance business"
+  ],
+  "key_takeaways": [
+    "Accounting policies are specific principles, bases, conventions, rules, and practices applied in preparing and presenting financial statements[cite: 1].",
+    "The primary objectives of accounting policies are maintaining financial quality, ensuring reliability, preserving consistency, enabling comparability, and guaranteeing full and fair disclosure[cite: 1].",
+    "An entity cannot change its accounting policy arbitrarily; a change is permitted only: (1) to comply with statutory law[cite: 1], (2) to comply with an Accounting Standard[cite: 1], or (3) to provide a truer and fairer view of financial statements[cite: 1].",
+    "A voluntary change in an accounting policy must normally be accounted for retrospectively, adjusting past-period surplus or deficiency in the current P&L[cite: 1].",
+    "Under AS 1, all significant accounting policies and any material changes (with quantified financial impact) must be disclosed in the Notes to Accounts[cite: 1].",
+    "In non-life insurance accounting, the Reserve for Unexpired Risk is maintained at 100% of Net Written Premium for Marine Hull, and 50% (or 1/365th) for other domestic business classes[cite: 1].",
+    "A Premium Deficiency Reserve (PDR) is mandatory if expected claims and expenses exceed the unearned premium reserve[cite: 1].",
+    "Insurers must formulate clear policy disclosures on the segregation and apportionment of investment income and management expenses between Policyholders' funds (Revenue A/c) and Shareholders' funds (P&L A/c)[cite: 1]."
+  ],
+  "self_test_questions": [
+    {
+      "id": "u04_q01",
+      "question": "The term 'accounting policies' refers to:",
+      "options": [
+        "The measurement bases used by an entity[cite: 1]",
+        "The accounting concepts and conventions adopted by an entity[cite: 1]",
+        "The accounting principles applied by an entity[cite: 1]",
+        "All of the above[cite: 1]"
+      ],
+      "correct_answer": "All of the above",
+      "explanation": "Accounting policies encompass specific principles, measurement bases, conventions, and rules applied by an enterprise in financial reporting[cite: 1]."
+    },
+    {
+      "id": "u04_q02",
+      "question": "When can an entity change one of its accounting policies?",
+      "options": [
+        "Whenever it wishes to do so[cite: 1]",
+        "If this would result in the provision of reliable and more relevant information[cite: 1]",
+        "If this would reduce the cost of preparing the financial statements[cite: 1]",
+        "Never[cite: 1]"
+      ],
+      "correct_answer": "If this would result in the provision of reliable and more relevant information",
+      "explanation": "An accounting policy change is valid only to comply with statute, new standards, or if it produces more reliable and relevant (truer/fairer) information[cite: 1]."
+    },
+    {
+      "id": "u04_q03",
+      "question": "Reserve for unexpired risk is statutorily created at what percentage for marine hull business?",
+      "options": [
+        "50% of net premium[cite: 1]",
+        "100% of net written premium[cite: 1]",
+        "25% of gross premium[cite: 1]",
+        "1/365th of paid claims[cite: 1]"
+      ],
+      "correct_answer": "100% of net written premium",
+      "explanation": "IRDAI mandates a 100% Reserve for Unexpired Risk on Marine Hull business, whereas other classes use 50% or the 1/365th basis[cite: 1]."
+    },
+    {
+      "id": "u04_q04",
+      "question": "A change in an accounting policy not resulting from the initial application of a standard must normally be accounted for:",
+      "options": [
+        "Retrospectively[cite: 1]",
+        "Prospectively[cite: 1]",
+        "Either retrospectively or prospectively[cite: 1]",
+        "Prospectively, unless it is impracticable to account for impact of change[cite: 1]"
+      ],
+      "correct_answer": "Retrospectively",
+      "explanation": "Non-mandatory policy modifications must be accounted for retrospectively with quantified impact disclosed in Notes to Accounts[cite: 1]."
+    },
+    {
+      "id": "u04_q05",
+      "question": "In foreign currency transactions, monetary and non-monetary assets and liabilities of non-integral foreign operations are translated at the:",
+      "options": [
+        "Opening rate[cite: 1]",
+        "Closing rate[cite: 1]",
+        "Average rate[cite: 1]",
+        "Economy rate[cite: 1]"
+      ],
+      "correct_answer": "Closing rate",
+      "explanation": "Assets and liabilities (including contingent liabilities) of non-integral foreign operations are translated at the closing exchange rate[cite: 1]."
+    }
+  ]
+}

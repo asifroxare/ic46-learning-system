@@ -1,0 +1,128 @@
+{
+  "unitId": "IC46_UNIT_02",
+  "title": "Accounting Concepts, Principles & Financial Statement Elements",
+  "initialState": {
+    "cash": 1000000,
+    "fixedAssets": 0,
+    "investments": 0,
+    "liabilities": 0,
+    "equity": 1000000,
+    "revenue": 0,
+    "expenses": 0,
+    "currentStage": 1,
+    "score": 0,
+    "misconceptionsLogged": []
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "concept": "Historical Cost Concept",
+      "scenario": "Acquired commercial property for ₹50,00,000, incurring ₹5,00,000 for structural elevation and ₹5,00,000 in statutory registration levies. At year-end, current market appraisal reaches ₹70,00,000.",
+      "question": "At what capitalized value should this property be recorded on the Balance Sheet?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Record at ₹60,00,000 (Historical Acquisition Cost + Improvement + Legal/Registration)",
+          "isCorrect": true,
+          "financialImpact": { "cash": -6000000, "fixedAssets": 6000000 },
+          "feedback": "Correct! Under the Historical Cost Concept, fixed assets are recorded at purchase price plus all direct costs necessary to bring the asset into operational use. Subsequent market escalation is not recognized."
+        },
+        {
+          "id": "B",
+          "text": "Record at ₹70,00,000 (Current Appraised Market Value)",
+          "isCorrect": false,
+          "misconception": "MIS_COST_CONCEPT_VIOLATION",
+          "feedback": "Incorrect. Revaluation to market value on initial carry violates the Historical Cost Concept."
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "concept": "Statutory Realization & Section 64VB",
+      "scenario": "A client submits a commercial fire insurance proposal on March 30 for ₹5,00,000 annual premium. The risk proposal is accepted immediately, but the premium payment instrument is received and cleared on April 6.",
+      "question": "When does statutory revenue recognition occur for this transaction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Recognize on April 6 when the premium instrument is actually received and cleared",
+          "isCorrect": true,
+          "financialImpact": { "cash": 500000, "revenue": 500000 },
+          "feedback": "Correct! Under statutory insurance premium realization rules (Section 64VB), premium revenue and risk coverage are legally operative only upon actual receipt of premium."
+        },
+        {
+          "id": "B",
+          "text": "Recognize on March 30 under general trade accrual since the proposal was accepted",
+          "isCorrect": false,
+          "misconception": "MIS_REALIZATION_64VB_OVERRIDE",
+          "feedback": "Incorrect. In insurance accounting, statutory premium collection mandates supersede standard mercantile accrual."
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "concept": "Dual Aspect & Claims Settlement",
+      "scenario": "Apex Shield settles an outstanding fire loss liability of ₹1,00,00,000 via direct banking transfer.",
+      "question": "How does this settlement impact the fundamental accounting equation (Assets = Liabilities + Equity)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Decrease Current Assets (Bank) by ₹1 Cr; Decrease Current Liabilities (Outstanding Claims) by ₹1 Cr",
+          "isCorrect": true,
+          "financialImpact": { "cash": -10000000, "liabilities": -10000000 },
+          "feedback": "Correct! Dual Aspect maintains parity: a reduction in liability is matched with an equal reduction in assets, leaving net equity unchanged."
+        },
+        {
+          "id": "B",
+          "text": "Decrease Bank by ₹1 Cr; Decrease Equity by ₹1 Cr",
+          "isCorrect": false,
+          "misconception": "MIS_DUAL_ASPECT_CLAIM_SETTLEMENT",
+          "feedback": "Incorrect. Outstanding claims were already charged as an incurred expense when intimated. The actual cash settlement reduces existing liabilities, not equity."
+        }
+      ]
+    },
+    {
+      "stage": 4,
+      "concept": "Matching Concept & Accrued Expenses",
+      "scenario": "Total annual sales/earned revenue is ₹10,000. Purchases are ₹5,000, wages/salaries paid are ₹2,000 with ₹1,000 accrued/outstanding at year-end, and commission paid is ₹1,000 (which includes ₹500 prepaid for the subsequent period).",
+      "question": "Applying the Matching Concept, what is the net operational profit?",
+      "options": [
+        {
+          "id": "A",
+          "text": "₹1,500 (Revenue ₹10,000 minus Incurred Operating Costs ₹8,500)",
+          "isCorrect": true,
+          "financialImpact": { "revenue": 10000, "expenses": 8500 },
+          "feedback": "Correct! Matching requires matching incurred expenses against earned revenue: Purchases (₹5,000) + Incurred Wages (₹2,000 + ₹1,000) + Incurred Commission (₹1,000 - ₹500) = ₹8,500 expenses. Profit = ₹1,500."
+        },
+        {
+          "id": "B",
+          "text": "₹2,000 (Revenue ₹10,000 minus Cash Payments ₹8,000)",
+          "isCorrect": false,
+          "misconception": "MIS_MATCHING_CASH_VS_ACCRUAL",
+          "feedback": "Incorrect. Taking only cash paid (₹8,000) ignores accrued liabilities and prepaid deductions, distorting true periodic profit."
+        }
+      ]
+    },
+    {
+      "stage": 5,
+      "concept": "Prudence / Conservatism Principle",
+      "scenario": "Year-end inventory of salvage goods has a historical cost of ₹1,50,000, but changing market demand drops its Net Realizable Value (NRV) to ₹1,10,000.",
+      "question": "At what valuation must the inventory be carried on the financial statements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "₹1,10,000 (Lower of Cost or Net Realizable Value, recognizing ₹40,000 diminution loss immediately)",
+          "isCorrect": true,
+          "financialImpact": { "expenses": 40000 },
+          "feedback": "Correct! Under the Prudence principle, anticipated losses are recognized immediately, and inventory is valued at lower of cost or NRV."
+        },
+        {
+          "id": "B",
+          "text": "₹1,50,000 (Retain at Historical Cost until actual cash disposal occurs)",
+          "isCorrect": false,
+          "misconception": "MIS_PRUDENCE_INVENTORY_VALUATION",
+          "feedback": "Incorrect. Retaining historical cost overstates asset values and violates the prudence convention."
+        }
+      ]
+    }
+  ]
+}
