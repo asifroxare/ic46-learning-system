@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EdInsured &bull; IC-46 Insurance Accounting Interactive Lab</title>
+    <title>edinsured &bull; Non-Life Insurance &amp; Reinsurance Financial Simulation Lab</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN -->
@@ -71,30 +71,30 @@
 </head>
 <body class="custom-scrollbar overflow-x-hidden min-h-screen flex flex-col">
 
-    <!-- Top Futuristic Header Navigation Bar (EdInsured Style) -->
+    <!-- Top Futuristic Header Navigation Bar -->
     <header class="border-b border-gray-800/80 bg-[#0d111c]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-3 flex items-center justify-between shadow-xl">
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-sky-600 flex items-center justify-center font-black text-slate-900 text-sm shadow-md shadow-cyan-500/20">
-                IC
+                EI
             </div>
             <div>
                 <h1 class="text-sm font-bold text-white tracking-wide flex items-center gap-2">
-                    EdInsured IC-46 Insurance Accounting Lab
-                    <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">v2.0 HUD</span>
+                    edinsured Simulation Lab
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">v1.0 HUD</span>
                 </h1>
-                <p class="text-[11px] text-gray-400">Simulator-First Curriculum &bull; 456-Page Syllabus Decoded</p>
+                <p class="text-[11px] text-gray-400">Fintech Simulation Engine &bull; Interactive Professional Mechanics</p>
             </div>
         </div>
 
         <div class="flex items-center gap-4 text-xs font-mono">
             <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-gray-800">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-gray-300">Unit 1 &amp; Unit 2 Active</span>
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span class="text-gray-300">Track 3: Lab 09 Active</span>
             </div>
         </div>
     </header>
 
-    <!-- Global Corporate Ledger & Health Bar (Apex Shield Metrics) -->
+    <!-- Global Corporate Ledger & Health Bar -->
     <section class="bg-[#0b0f19] border-b border-gray-800/60 px-6 py-2.5">
         <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-xs font-mono">
             <div class="hud-card p-2.5 rounded-lg">
@@ -102,7 +102,7 @@
                 <span id="ledger-cash" class="text-white font-bold text-sm">&#8377; 0</span>
             </div>
             <div class="hud-card p-2.5 rounded-lg">
-                <span class="text-gray-400 text-[10px] block uppercase tracking-wider">Liabilities</span>
+                <span class="text-gray-400 text-[10px] block uppercase tracking-wider">Liabilities / Reserves</span>
                 <span id="ledger-liabilities" class="text-amber-400 font-bold text-sm">&#8377; 0</span>
             </div>
             <div class="hud-card p-2.5 rounded-lg">
@@ -110,11 +110,11 @@
                 <span id="ledger-equity" class="text-emerald-400 font-bold text-sm">&#8377; 0</span>
             </div>
             <div class="hud-card p-2.5 rounded-lg">
-                <span class="text-gray-400 text-[10px] block uppercase tracking-wider">Revenue</span>
+                <span class="text-gray-400 text-[10px] block uppercase tracking-wider">Revenue / Earned Prem</span>
                 <span id="ledger-revenue" class="text-cyan-400 font-bold text-sm">&#8377; 0</span>
             </div>
             <div class="hud-card p-2.5 rounded-lg">
-                <span class="text-gray-400 text-[10px] block uppercase tracking-wider">Expenses</span>
+                <span class="text-gray-400 text-[10px] block uppercase tracking-wider">Expenses / Incurred Claims</span>
                 <span id="ledger-expenses" class="text-rose-400 font-bold text-sm">&#8377; 0</span>
             </div>
             <div class="hud-card p-2.5 rounded-lg">
@@ -130,26 +130,64 @@
         <!-- Left Navigation Sidebar -->
         <aside class="w-64 bg-[#0d111c] border-r border-gray-800 p-3.5 flex flex-col gap-4 shrink-0 overflow-y-auto custom-scrollbar">
             <div>
-                <div class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 px-2 mb-2">Chapter 1: Scope &amp; GAAP</div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 px-2 mb-2">Track 1: Corporate Foundations</div>
                 <div class="space-y-1.5">
-                    <button onclick="switchUnit('unit1')" id="nav-unit1" class="unit-nav-btn active w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent transition-all flex items-center justify-between">
-                        <span>Unit 1: Meaning &amp; Scope</span>
-                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">Complete</span>
+                    <button onclick="switchUnit('unit1')" id="nav-unit1" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 01: Scope &amp; Solvency</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
                     </button>
                     <button onclick="switchUnit('unit2')" id="nav-unit2" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
-                        <span>Unit 2: Concepts &amp; GAAP</span>
-                        <span class="text-[9px] bg-emerald-950 text-emerald-300 px-1.5 py-0.5 rounded font-mono">Day 2</span>
+                        <span>Lab 02: Postulates &amp; Valuation</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
+                    </button>
+                    <button onclick="switchUnit('unit3')" id="nav-unit3" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 03: Standards &amp; IFRS 17</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
+                    </button>
+                    <button onclick="switchUnit('unit4')" id="nav-unit4" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 04: Reporting &amp; URR Math</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
                     </button>
                 </div>
             </div>
 
             <div>
-                <div class="text-[10px] font-bold uppercase tracking-wider text-gray-500 px-2 mb-2">Upcoming Roadmap</div>
-                <div class="space-y-1 text-gray-500 text-xs font-mono">
-                    <div class="px-3 py-1.5 rounded hover:bg-slate-900/40">Unit 3: AS &amp; Ind AS</div>
-                    <div class="px-3 py-1.5 rounded hover:bg-slate-900/40">Unit 4: Policies &amp; URR</div>
-                    <div class="px-3 py-1.5 rounded hover:bg-slate-900/40">Units 5–9: Final Accounts</div>
-                    <div class="px-3 py-1.5 rounded hover:bg-slate-900/40">Units 10–13: Insurance &amp; RI</div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-2 mb-2">Track 2: Operating Cycle</div>
+                <div class="space-y-1.5">
+                    <button onclick="switchUnit('unit5')" id="nav-unit5" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 05: Double-Entry Mechanics</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
+                    </button>
+                    <button onclick="switchUnit('unit6')" id="nav-unit6" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 06: Transaction Control &amp; BRS</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
+                    </button>
+                    <button onclick="switchUnit('unit7')" id="nav-unit7" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 07: Asset Capitalization &amp; Dep</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
+                    </button>
+                    <button onclick="switchUnit('unit8')" id="nav-unit8" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-300 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 08: Cash Reconciliation</span>
+                        <span class="text-[9px] bg-slate-900/80 px-1.5 py-0.5 rounded text-cyan-300 font-mono">&#10004;</span>
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 px-2 mb-2">Track 3: Insurance Financials</div>
+                <div class="space-y-1.5">
+                    <button onclick="switchUnit('unit9')" id="nav-unit9" class="unit-nav-btn active w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-white transition-all flex items-center justify-between">
+                        <span>Lab 09: Corporate Accounts</span>
+                        <span class="text-[9px] bg-cyan-950 text-cyan-300 px-1.5 py-0.5 rounded font-mono">Day 9</span>
+                    </button>
+                    <button onclick="switchUnit('unit10')" id="nav-unit10" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-400 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 10: Technical Underwriting</span>
+                        <span class="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded text-gray-500 font-mono">Day 10</span>
+                    </button>
+                    <button onclick="switchUnit('unit11')" id="nav-unit11" class="unit-nav-btn w-full text-left px-3 py-2 rounded-lg text-xs border border-transparent text-gray-400 hover:bg-slate-800/60 transition-all flex items-center justify-between">
+                        <span>Lab 11: Insurance Regs &amp; Sched B</span>
+                        <span class="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded text-gray-500 font-mono">Day 11</span>
+                    </button>
                 </div>
             </div>
             
@@ -173,8 +211,8 @@
             <!-- Sub-Header & 3-Part Architecture Tabs -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-800/80 pb-3">
                 <div>
-                    <h2 id="current-unit-heading" class="text-lg font-bold text-white tracking-wide">Unit 2: Accounting Concepts, Principles and Conventions</h2>
-                    <p id="current-unit-subheading" class="text-xs text-gray-400 mt-0.5">GAAP Framework, Prudence, Section 64VB Realisation, and Duality Mechanics</p>
+                    <h2 id="current-unit-heading" class="text-lg font-bold text-white tracking-wide">Lab 09: Corporate Accounts</h2>
+                    <p id="current-unit-subheading" class="text-xs text-gray-400 mt-0.5">Companies Act 2013, Schedule III Financial Statements Layout, Share Capital Hierarchy, and AS 4 Revised Proposed Dividend Disclosures</p>
                 </div>
 
                 <!-- 3-Part View Switcher -->
@@ -191,24 +229,43 @@
                 </div>
             </div>
 
-            <!-- ========================================================================= -->
-            <!-- PART 1: CONCEPT SHEETS (MICRO-BITES)                                      -->
-            <!-- ========================================================================= -->
+            <!-- PART 1: CONCEPT SHEETS (MICRO-BITES) -->
             <section id="sec-bites" class="space-y-4">
-                <div id="bites-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-                    <!-- Dynamically injected based on active Unit -->
-                </div>
+                <div id="bites-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs"></div>
             </section>
 
-            <!-- ========================================================================= -->
-            <!-- PART 2: INTERACTIVE SANDBOX (APEX SHIELD DECISION SIMULATOR)              -->
-            <!-- ========================================================================= -->
+            <!-- PART 2: INTERACTIVE SANDBOX -->
             <section id="sec-sandbox" class="hidden space-y-6">
                 <div class="flex items-center justify-between border-b border-gray-800 pb-2">
                     <span id="sb-stage-title" class="text-xs font-mono text-cyan-400 uppercase font-bold">Scenario Decision Tree &bull; Stage 1 of 3</span>
                     <button onclick="resetSandboxCurrentUnit()" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-gray-300 font-mono border border-gray-700">
                         Reset Stage
                     </button>
+                </div>
+
+                <!-- Schedule III Telemetry Widget -->
+                <div class="hud-card p-4 rounded-xl space-y-3 border border-gray-800">
+                    <div class="flex items-center justify-between border-b border-gray-800 pb-2">
+                        <span class="text-xs font-mono text-cyan-400 uppercase font-bold">Schedule III &amp; Section 129 Telemetry</span>
+                        <span class="text-[10px] font-mono text-emerald-400">Vertical Financial Layout Active</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+                        <div class="bg-[#0b0f19] p-3 rounded-lg border border-gray-800">
+                            <span class="text-gray-400 block text-[10px]">Share Capital Tiering</span>
+                            <span class="text-cyan-400 font-bold text-sm">Authorised &gt; Issued &gt; Paid-Up</span>
+                            <span class="text-gray-500 text-[10px] block mt-1">Calls-in-arrears deducted</span>
+                        </div>
+                        <div class="bg-[#0b0f19] p-3 rounded-lg border border-gray-800">
+                            <span class="text-gray-400 block text-[10px]">Proposed Dividend (AS 4)</span>
+                            <span class="text-amber-400 font-bold text-sm">Notes to Accounts Only</span>
+                            <span class="text-gray-500 text-[10px] block mt-1">Not a liability until AGM approval</span>
+                        </div>
+                        <div class="bg-[#0b0f19] p-3 rounded-lg border border-gray-800">
+                            <span class="text-gray-400 block text-[10px]">Debenture Accrual</span>
+                            <span class="text-rose-400 font-bold text-sm">Full Finance Cost</span>
+                            <span class="text-gray-500 text-[10px] block mt-1">Unpaid interest in Current Liab</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="hud-card p-6 rounded-xl space-y-5">
@@ -222,7 +279,6 @@
                         <div id="sb-options-container" class="space-y-2.5"></div>
                     </div>
 
-                    <!-- Sandbox Diagnostic Feedback -->
                     <div id="sb-feedback-panel" class="hidden p-4 rounded-lg border text-xs font-mono leading-relaxed space-y-1"></div>
 
                     <div id="sb-action-container" class="hidden flex justify-end pt-2">
@@ -233,12 +289,10 @@
                 </div>
             </section>
 
-            <!-- ========================================================================= -->
-            <!-- PART 3: 10-QUESTION DIAGNOSTIC EXAM & MISCONCEPTION BANK                  -->
-            <!-- ========================================================================= -->
+            <!-- PART 3: 10-QUESTION DIAGNOSTIC EXAM -->
             <section id="sec-exam" class="hidden space-y-6">
                 <div class="flex items-center justify-between border-b border-gray-800 pb-2">
-                    <span class="text-xs font-mono text-cyan-400 uppercase font-bold">10 Exam-Standard Questions &bull; Weakness Diagnostic Engine</span>
+                    <span class="text-xs font-mono text-cyan-400 uppercase font-bold">10 Diagnostic Questions &bull; Weakness Identification Engine</span>
                     <div class="text-xs font-mono text-gray-400">Score: <span id="exam-score-display" class="text-emerald-400 font-bold">0</span> / 10</div>
                 </div>
 
@@ -260,387 +314,229 @@
         </main>
     </div>
 
-    <!-- Complete Unified Javascript Engine for Units 1 & 2 -->
+    <!-- Master Unified Javascript State Machine -->
     <script>
         const unitDatabase = {
             "unit1": {
                 id: "unit1",
-                title: "Unit 1: Financial Accounting – Meaning and Scope",
-                subheading: "Accounting Definitions, Section 128 Retention, Solvency (ASM/RSM), and Books of Accounts",
+                title: "Lab 01: Financial Accounting & Enterprise Solvency",
+                subheading: "Financial Reporting Boundaries, ASM vs. RSM Solvency Ratios, and Statutory Record Maintenance",
                 bites: [
-                    {
-                        tag: "Concept 01",
-                        title: "Meaning & AICPA Definition",
-                        desc: "Accounting is the art of recording, classifying, and summarising in a significant manner and in terms of money, transactions and events.",
-                        rule: "Rule: All transactions are events, but all events are not transactions."
-                    },
-                    {
-                        tag: "Concept 02",
-                        title: "Position vs. Performance",
-                        desc: "Performance is ascertained through Revenue Accounts and Profit & Loss Account; Financial Position is reported via the Balance Sheet.",
-                        rule: "Insurance statements are known as 'Form Accounts'."
-                    },
-                    {
-                        tag: "Concept 03",
-                        title: "Solvency: ASM vs. RSM",
-                        desc: "Available Solvency Margin (ASM) is the excess of admissible assets over liabilities. Required Solvency Margin (RSM) is determined by volume and incurred claims.",
-                        rule: "Solvency & Liquidity are primary indicators of insurer health."
-                    },
-                    {
-                        tag: "Concept 04",
-                        title: "7 Inherent Limitations",
-                        desc: "Permits alternative accounting treatments (AS-2), is influenced by subjective estimates (claim surveyors), and excludes qualitative non-monetary items.",
-                        rule: "Balance sheet reflects going concern values, not current market liquidation values."
-                    },
-                    {
-                        tag: "Concept 05",
-                        title: "Sec. 128 Companies Act 2013",
-                        desc: "Books must be maintained on accrual basis and double-entry system, preserved in good order for not less than 8 financial years.",
-                        rule: "Mandatory for all registered corporate entities in India."
-                    },
-                    {
-                        tag: "Concept 06",
-                        title: "17 Operating Registers",
-                        desc: "General insurers maintain dedicated operating registers: Premium Register, Cover Note Control, Co-insurance, Claims Intimation/Recovery, and Dishonoured Cheques.",
-                        rule: "Different from Head Office consolidated books."
-                    }
+                    { tag: "Concept 01", title: "Financial Accounting Mechanics", desc: "Financial accounting provides structured identification, measurement, recording, and communication of economic transactions to external and internal stakeholders. It transforms transactional source data into standardized financial statements.", rule: "Rule: Every transaction is an economic event, but non-monetary events cannot be recognized in accounting ledgers." },
+                    { tag: "Concept 02", title: "Performance vs. Financial Position", desc: "Operational performance is measured over a defined accounting period via departmental Revenue Accounts and the Profit & Loss statement. Financial position is a snapshot of assets, liabilities, and equity presented in the Balance Sheet.", rule: "Insurance statements follow statutory 'Form Accounts' formats strictly regulated by law." },
+                    { tag: "Concept 03", title: "Enterprise Solvency: ASM vs. RSM", desc: "Available Solvency Margin (ASM) represents net admissible equity (admissible assets minus liabilities). Required Solvency Margin (RSM) is the mathematically mandated buffer dictated by underwriting exposures and incurred claim liabilities.", rule: "Solvency Control: Insurers must maintain a minimum Solvency Ratio (ASM/RSM) of 1.50x (150%)." },
+                    { tag: "Concept 04", title: "Inherent Boundaries & Limitations", desc: "Accounting permits alternative methods (e.g., inventory valuation or depreciation options), relies on subjective loss estimations (surveyors and actuarial IBNR calculations), and records assets at historical cost rather than liquidation market value.", rule: "Objectivity is subject to estimation margins in outstanding claim reserves." },
+                    { tag: "Concept 05", title: "Statutory Record Preservation (Section 128)", desc: "Under corporate legislation (Section 128), all registered corporate entities must maintain books on an accrual and double-entry basis, preserving complete records and vouchers for not less than 8 financial years immediately preceding the current year.", rule: "Mandatory statutory compliance under penalty of law." },
+                    { tag: "Concept 06", title: "Operational Branch Ledgers", desc: "Operating field offices maintain dedicated control registers to eliminate premium and claims leakage: Cover Note Control Registers, Collection Registers, Co-insurance Ledgers, and Claims Recovery Books.", rule: "Field registers integrate periodically into consolidated corporate general ledgers." }
                 ],
                 sandbox: {
                     initialState: { cash: 0, liabilities: 0, equity: 0, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
                     stages: [
-                        {
-                            stage: 1,
-                            scenario: "Promoter contributes ₹50,00,000 personal savings into Apex Shield's corporate bank account.",
-                            question: "How should this transaction be recorded in Apex Shield's books?",
-                            options: [
-                                { id: "A", text: "Increase Cash (Asset) by ₹50L, Increase Capital (Equity) by ₹50L", isCorrect: true, financialImpact: { cash: 5000000, equity: 5000000 }, feedback: "Correct. Under Business Entity Concept, the company is distinct from its owner." },
-                                { id: "B", text: "No entry required as it is personal fund", isCorrect: false, misc: "MIS_ENTITY_CONCEPT_IGNORED", feedback: "Incorrect. Once transferred, it represents corporate share capital liability to the owner." }
-                            ]
-                        },
-                        {
-                            stage: 2,
-                            scenario: "Apex Shield hires a Chief Underwriter with an annual CTC of ₹25,00,000.",
-                            question: "What journal entry is required on the day the appointment contract is signed?",
-                            options: [
-                                { id: "A", text: "No financial entry recorded today", isCorrect: true, financialImpact: {}, feedback: "Correct. Under Money Measurement, service contracts are not recorded until monetary service is rendered." },
-                                { id: "B", text: "Debit Human Asset ₹25L, Credit Salary Payable ₹25L", isCorrect: false, misc: "MIS_MONEY_MEASUREMENT_VIOLATION", feedback: "Incorrect. Accounting only records completed monetary transactions." }
-                            ]
-                        },
-                        {
-                            stage: 3,
-                            scenario: "Received ₹12,00,000 annual policy premium in advance for fire cover commencing next financial year.",
-                            question: "How should this cash receipt be classified immediately upon receipt?",
-                            options: [
-                                { id: "A", text: "Increase Cash ₹12L, Increase Unearned Premium / Advance (Liability) ₹12L", isCorrect: true, financialImpact: { cash: 1200000, liabilities: 1200000 }, feedback: "Correct. Under Accrual & Realisation, premium received before risk commencement is an unearned liability." },
-                                { id: "B", text: "Increase Cash ₹12L, Increase Premium Revenue ₹12L", isCorrect: false, misc: "MIS_ACCRUAL_RECOGNITION_ERROR", feedback: "Incorrect. Revenue cannot be earned until the insurance coverage period begins." }
-                            ]
-                        }
+                        { stage: 1, scenario: "Apex Shield General Insurance Co. receives an initial equity capital infusion of ₹1,00,00,000 transferred into its statutory bank operating account by founding shareholders.", question: "Applying the Business Entity Concept and Double-Entry rules, how must this capitalization event be recorded?", options: [{ id: "A", text: "Debit Bank Account (Asset) ₹1,00,00,000 | Credit Share Capital (Equity) ₹1,00,00,000", isCorrect: true, financialImpact: { cash: 10000000, equity: 10000000 }, feedback: "Correct. The corporate entity is distinct from its investors; cash resources increase (Debit) and corporate equity claims increase (Credit)." }, { id: "B", text: "No entry required as equity is not an operating revenue transaction", isCorrect: false, misc: "MIS_ENTITY_CAPITALIZATION_OMISSION", feedback: "Incorrect. Paid-in capital forms the foundational equity base of the enterprise and must be recognized in the ledger." }] },
+                        { stage: 2, scenario: "Apex Shield executes an employment agreement appointing a Chief Actuary with an annual salary package of ₹36,00,000 payable monthly.", question: "What journal entry is required on the date the appointment agreement is executed?", options: [{ id: "A", text: "No accounting entry recorded on signing date (non-financial event)", isCorrect: true, financialImpact: {}, feedback: "Correct. Under the Money Measurement and Accrual concepts, future salary obligations are recognized only as monthly services are performed." }, { id: "B", text: "Debit Actuarial Human Resource Asset ₹36L | Credit Salary Liability ₹36L", isCorrect: false, misc: "MIS_MONEY_MEASUREMENT_VIOLATION", feedback: "Incorrect. Accounting ledgers do not capitalize unperformed employment contracts as balance sheet assets." }] },
+                        { stage: 3, scenario: "Apex Shield collects ₹25,00,000 in upfront annual premiums for commercial fire policies whose coverage terms commence in the next financial accounting quarter.", question: "Under statutory realization principles, how must this immediate cash receipt be booked?", options: [{ id: "A", text: "Debit Bank ₹25L | Credit Unearned Premium / Advance Premium (Liability) ₹25L", isCorrect: true, financialImpact: { cash: 2500000, liabilities: 2500000 }, feedback: "Correct. Premium collected prior to risk inception represents an unearned obligation (Liability) and cannot be recognized as earned revenue yet." }, { id: "B", text: "Debit Bank ₹25L | Credit Net Earned Premium Revenue ₹25L", isCorrect: false, misc: "MIS_PREMATURE_REVENUE_RECOGNITION", feedback: "Incorrect. Revenue is only earned pro-rata as risk expires over the policy coverage period." }] }
                     ]
                 },
                 exam: [
-                    {
-                        id: "u1_q1",
-                        question: "1. Under Section 128 of the Companies Act, 2013, books of accounts must be preserved for not less than:",
-                        options: [
-                            { id: "A", text: "5 Financial Years", isCorrect: false, misc: "MIS_SEC128_DURATION_UNDERESTIMATION" },
-                            { id: "B", text: "8 Financial Years immediately preceding current year", isCorrect: true },
-                            { id: "C", text: "10 Financial Years", isCorrect: false, misc: "MIS_SEC128_DURATION_OVERESTIMATION" },
-                            { id: "D", text: "Permanently for all entities", isCorrect: false, misc: "MIS_PERMANENT_RECORD_CONFUSION" }
-                        ],
-                        explanation: "Section 128(5) specifies a mandatory 8-year preservation rule for books and vouchers."
-                    },
-                    {
-                        id: "u1_q2",
-                        question: "2. In General Insurance business, operating profitability is determined by:",
-                        options: [
-                            { id: "A", text: "Revenue Accounts followed by Profit & Loss Account", isCorrect: true },
-                            { id: "B", text: "Balance Sheet only", isCorrect: false, misc: "MIS_STATEMENT_PURPOSE_CONFUSION" },
-                            { id: "C", text: "Income & Expenditure Statement", isCorrect: false, misc: "MIS_NPO_FORMAT_CONFUSION" },
-                            { id: "D", text: "Receipts & Payments Cash Account", isCorrect: false, misc: "MIS_CASH_STATEMENT_CONFUSION" }
-                        ],
-                        explanation: "Revenue accounts determine departmental operating results and P&L determines corporate net profit."
-                    },
-                    {
-                        id: "u1_q3",
-                        question: "3. Solvency of an insurance company is evaluated by comparing:",
-                        options: [
-                            { id: "A", text: "Gross Direct Premium vs Net Written Premium", isCorrect: false, misc: "MIS_PREMIUM_VOLUME_CONFUSION" },
-                            { id: "B", text: "Available Solvency Margin (ASM) vs Required Solvency Margin (RSM)", isCorrect: true },
-                            { id: "C", text: "Paid Claims vs Outstanding Claims Reserve", isCorrect: false, misc: "MIS_CLAIMS_METRIC_CONFUSION" },
-                            { id: "D", text: "Cash in hand vs Bank Overdraft", isCorrect: false, misc: "MIS_LIQUIDITY_SOLVENCY_CONFUSION" }
-                        ],
-                        explanation: "ASM must meet or exceed RSM to satisfy statutory solvency mandates."
-                    },
-                    {
-                        id: "u1_q4",
-                        question: "4. The Cash Book is unique in double-entry bookkeeping because it functions as:",
-                        options: [
-                            { id: "A", text: "A Journal only (Book of Prime Entry)", isCorrect: false, misc: "MIS_JOURNAL_ONLY_CONFUSION" },
-                            { id: "B", text: "A Ledger Account only", isCorrect: false, misc: "MIS_LEDGER_ONLY_CONFUSION" },
-                            { id: "C", text: "Both a Journal (Book of Prime Entry) and a Ledger Account", isCorrect: true },
-                            { id: "D", text: "A Trial Balance extraction register", isCorrect: false, misc: "MIS_TRIAL_BALANCE_CONFUSION" }
-                        ],
-                        explanation: "Cash Book records transactions initially and acts as the cash/bank ledger balance."
-                    },
-                    {
-                        id: "u1_q5",
-                        question: "5. Which item cannot be recorded in the books of accounts due to the Money Measurement Concept?",
-                        options: [
-                            { id: "A", text: "Efficiency, sincerity, and loyalty of underwriting staff", isCorrect: true },
-                            { id: "B", text: "Purchase of IT equipment for ₹5,00,000", isCorrect: false, misc: "MIS_TANGIBLE_ASSET_CONFUSION" },
-                            { id: "C", text: "Advance rent paid for ₹1,00,000", isCorrect: false, misc: "MIS_PREPAID_EXPENSE_CONFUSION" },
-                            { id: "D", text: "Bank loan interest paid for ₹25,000", isCorrect: false, misc: "MIS_INTEREST_EXPENSE_CONFUSION" }
-                        ],
-                        explanation: "Qualitative factors cannot be expressed in monetary currency and are excluded."
-                    },
-                    {
-                        id: "u1_q6",
-                        question: "6. For a Municipal Corporation, receipt of municipal tax collection is classified as:",
-                        options: [
-                            { id: "A", text: "Utilisation of Funds", isCorrect: false, misc: "MIS_SOURCE_UTILISATION_INVERSION" },
-                            { id: "B", text: "Source of Funds", isCorrect: true },
-                            { id: "C", text: "Capital Expenditure", isCorrect: false, misc: "MIS_CAPITAL_EXPENDITURE_CONFUSION" },
-                            { id: "D", text: "Administrative Liability", isCorrect: false, misc: "MIS_LIABILITY_MISCLASSIFICATION" }
-                        ],
-                        explanation: "Taxes collected represent financial inflows/sources of funds."
-                    },
-                    {
-                        id: "u1_q7",
-                        question: "7. Why is realisable market value of fixed assets not shown on the Balance Sheet?",
-                        options: [
-                            { id: "A", text: "Due to Going Concern Concept (assumes indefinite life at historical cost)", isCorrect: true },
-                            { id: "B", text: "Due to Business Entity Concept", isCorrect: false, misc: "MIS_ENTITY_CONFUSION" },
-                            { id: "C", text: "Due to Accounting Period Concept", isCorrect: false, misc: "MIS_PERIODICITY_CONFUSION" },
-                            { id: "D", text: "Because immovable property cannot be valued", isCorrect: false, misc: "MIS_VALUATION_DENIAL" }
-                        ],
-                        explanation: "Going concern assumes the entity will continue operations rather than undergo immediate liquidation."
-                    },
-                    {
-                        id: "u1_q8",
-                        question: "8. Outstanding claims estimates vary based on surveyor personal opinion. Which convention suffers?",
-                        options: [
-                            { id: "A", text: "Convention of Consistency", isCorrect: false, misc: "MIS_CONSISTENCY_CONFUSION" },
-                            { id: "B", text: "Convention of Objectivity", isCorrect: true },
-                            { id: "C", text: "Convention of Materiality", isCorrect: false, misc: "MIS_MATERIALITY_CONFUSION" },
-                            { id: "D", text: "Convention of Full Disclosure", isCorrect: false, misc: "MIS_DISCLOSURE_CONFUSION" }
-                        ],
-                        explanation: "Subjective surveyor opinions introduce personal judgment, limiting absolute objectivity."
-                    },
-                    {
-                        id: "u1_q9",
-                        question: "9. Financial statements of insurers and banks are popularly referred to as:",
-                        options: [
-                            { id: "A", text: "Single Entry Statements", isCorrect: false, misc: "MIS_SINGLE_ENTRY_CONFUSION" },
-                            { id: "B", text: "'Form Accounts' governed by statutory layout formats", isCorrect: true },
-                            { id: "C", text: "Unregulated Journals", isCorrect: false, misc: "MIS_UNREGULATED_VIEW" },
-                            { id: "D", text: "Cash Accounting Registers", isCorrect: false, misc: "MIS_CASH_SYSTEM_CONFUSION" }
-                        ],
-                        explanation: "Statutory standardized formats (IRDAI Form A/B) are known as Form Accounts."
-                    },
-                    {
-                        id: "u1_q10",
-                        question: "10. Which register is specifically maintained at an insurance branch to prevent premium leakage?",
-                        options: [
-                            { id: "A", text: "Cover Note Control Register", isCorrect: true },
-                            { id: "B", text: "Petty Cash Book", isCorrect: false, misc: "MIS_PETTY_CASH_CONFUSION" },
-                            { id: "C", text: "General Ledger", isCorrect: false, misc: "MIS_GENERAL_LEDGER_CONFUSION" },
-                            { id: "D", text: "Cheque Dishonour Register", isCorrect: false, misc: "MIS_DISHONOUR_REGISTER_CONFUSION" }
-                        ],
-                        explanation: "Cover Note Control Registers track serial numbers of all issued temporary covers."
-                    }
+                    { id: "u1_q1", question: "1. Corporate legislation (Section 128) mandates that corporate entities preserve books of accounts and relevant vouchers for a minimum period of:", options: [{ id: "A", text: "5 Financial Years", isCorrect: false, misc: "MIS_SEC128_UNDERESTIMATION" }, { id: "B", text: "8 Financial Years immediately preceding the current year", isCorrect: true }, { id: "C", text: "12 Financial Years", isCorrect: false, misc: "MIS_SEC128_OVERESTIMATION" }, { id: "D", text: "Indefinitely across all document types", isCorrect: false, misc: "MIS_PERMANENT_STORAGE_CONFUSION" }], explanation: "Section 128(5) requires books of account and related supporting vouchers to be preserved in good order for not less than 8 financial years." }
                 ]
             },
             "unit2": {
                 id: "unit2",
-                title: "Unit 2: Accounting Concepts, Principles and Conventions",
-                subheading: "The 9 Concepts, 8 GAAP Principles, Section 64VB Realisation Override, and Financial Elements",
+                title: "Lab 02: Core Accounting Postulates & Valuation",
+                subheading: "The 9 Fundamental Postulates, 8 GAAP Rules, Statutory Advance Realisation Override, and Conservatism Math",
                 bites: [
-                    {
-                        tag: "Concept 01",
-                        title: "The 9 Core Accounting Concepts",
-                        desc: "1. Business Entity, 2. Money Measurement, 3. Going Concern, 4. Accounting Period, 5. Historical Cost, 6. Dual Aspect, 7. Realisation, 8. Accrual, 9. Matching.",
-                        rule: "Postulates upon which all accounting standards and records are established."
-                    },
-                    {
-                        tag: "Concept 02",
-                        title: "Dual Aspect & Equation",
-                        desc: "Every transaction affects two accounts on opposite sides. Fundamental Equation: Assets = Liabilities + Capital (Owners' Equity).",
-                        rule: "A decrease in a liability reduces an asset equally upon payment."
-                    },
-                    {
-                        tag: "Concept 03",
-                        title: "Section 64VB Realisation Override",
-                        desc: "In general insurance, premium is recognized upon actual receipt/guarantee before risk commences, overriding normal commercial credit recognition.",
-                        rule: "Section 64VB Insurance Act 1938 prohibits credit premium assumption."
-                    },
-                    {
-                        tag: "Concept 04",
-                        title: "Matching Concept in Insurance",
-                        desc: "Premium is recognized as earned income over the contract risk period. Unearned portions are set aside in an Unexpired Risk Reserve (URR).",
-                        rule: "Avoids overstating current period operating profitability."
-                    },
-                    {
-                        tag: "Concept 05",
-                        title: "Principle of Prudence (Conservatism)",
-                        desc: "Recognize all anticipated losses, provisions, and contingent liabilities immediately. Do not recognize unrealized anticipated gains.",
-                        rule: "Provide for all doubtful debts and outstanding claim liabilities."
-                    },
-                    {
-                        tag: "Concept 06",
-                        title: "Elements of Financial Statements",
-                        desc: "Balance Sheet: Assets, Liabilities, and Equity (Net Worth). Performance: Revenues (economic inflows) and Expenses (economic outflows).",
-                        rule: "Full and fair disclosures presented in Notes to Accounts."
-                    }
+                    { tag: "Concept 01", title: "The 9 Foundational Postulates", desc: "General accounting rests on 9 universal postulates: 1. Business Entity; 2. Money Measurement; 3. Going Concern; 4. Accounting Period; 5. Historical Cost; 6. Dual Aspect; 7. Realisation; 8. Accrual; 9. Matching.", rule: "Rule: Postulates provide the structural logic ensuring financial statements remain comparable and objective." },
+                    { tag: "Concept 02", title: "Dual Aspect & Balance Sheet Duality", desc: "Every business transaction alters at least two accounts in opposing balance. Expressed via the foundational accounting equation: Assets = Liabilities + Capital (Owners' Equity).", rule: "Equation Law: Total enterprise resources (Assets) equal the total claims of creditors (Liabilities) and shareholders (Equity)." },
+                    { tag: "Concept 03", title: "Statutory Advance Realisation Override", desc: "Under general commercial GAAP, revenue is recognized upon credit delivery under the accrual concept. In general insurance, this is overridden by statutory advance realization mandates: risk cannot be assumed without upfront premium receipt.", rule: "Realisation Override: Unearned premium collected is deferred as an unexpired risk liability until coverage begins." },
+                    { tag: "Concept 04", title: "The Matching Concept in Insurance Operations", desc: "Revenues earned must be paired directly with all operational costs and losses incurred to generate that revenue within the same accounting window.", rule: "Unearned Risk: Written premiums extending into future periods are allocated to the Reserve for Unexpired Risks (URR)." },
+                    { tag: "Concept 05", title: "Principle of Prudence (Conservatism)", desc: "Anticipate zero prospective profits, but provide immediately for all foreseeable claims, bad debts, and legal obligations. Assets and revenues must never be overstated.", rule: "Prudence Rule: Outstanding claims, IBNR provisions, and inventory declines must be recognized as immediate expenses." },
+                    { tag: "Concept 06", title: "Historical Cost vs. Fair Market Value", desc: "Fixed physical assets are capitalized at acquisition historical cost (purchase price + freight + installation charges) rather than speculative market replacement values.", rule: "Cost Rule: Tangible properties remain anchored at depreciated historical cost on the balance sheet." }
                 ],
                 sandbox: {
-                    initialState: { cash: 6200000, liabilities: 1200000, equity: 5000000, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
+                    initialState: { cash: 10000000, liabilities: 2500000, equity: 10000000, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
                     stages: [
-                        {
-                            stage: 1,
-                            scenario: "Apex Shield acquires office furniture worth ₹4,00,000 in cash. A property valuer estimates market value at ₹6,00,000.",
-                            question: "At what amount must the asset be entered in the books under the Historical Cost Concept?",
-                            options: [
-                                { id: "A", text: "Record Furniture Asset at historical cost ₹4,00,000 (Cash decreases ₹4L)", isCorrect: true, financialImpact: { cash: -400000 }, feedback: "Correct. Historical cost requires assets to be recorded at purchase price, ignoring unrealized market gains." },
-                                { id: "B", text: "Record Furniture Asset at ₹6,00,000 and recognize ₹2L revaluation gain", isCorrect: false, misc: "MIS_HISTORICAL_COST_VIOLATION", feedback: "Incorrect. Under GAAP, fixed assets cannot be written up to market price upon acquisition." }
-                            ]
-                        },
-                        {
-                            stage: 2,
-                            scenario: "Apex Shield receives a proposal for a ₹10,00,000 industrial fire policy. Cover note is signed, but premium payment is not received.",
-                            question: "Can Apex Shield assume risk and recognize revenue under Section 64VB?",
-                            options: [
-                                { id: "A", text: "No risk assumed and no revenue recognized until premium is received in advance", isCorrect: true, financialImpact: {}, feedback: "Correct. Section 64VB of the Insurance Act prohibits risk assumption without advance premium receipt." },
-                                { id: "B", text: "Debit Premium Receivable ₹10L, Credit Premium Revenue ₹10L", isCorrect: false, misc: "MIS_SEC64VB_BREACH", feedback: "Incorrect. General insurance rules prohibit booking premium revenue on credit prior to receipt." }
-                            ]
-                        },
-                        {
-                            stage: 3,
-                            scenario: "Apex Shield faces a pending court litigation of ₹3,00,000 for a disputed claim. Legal counsel advises payout is probable.",
-                            question: "How should this scenario be recorded under the Prudence Principle?",
-                            options: [
-                                { id: "A", text: "Create Provision for Claims ₹3,00,000 (Expenses ₹3L, Liabilities ₹3L)", isCorrect: true, financialImpact: { expenses: 300000, liabilities: 300000 }, feedback: "Correct. Prudence mandates providing for all probable losses and liabilities immediately." },
-                                { id: "B", text: "Ignore the litigation until final court decree is issued", isCorrect: false, misc: "MIS_PRUDENCE_CONSERVATISM_FAILURE", feedback: "Incorrect. Prudence requires immediate provisioning when a loss obligation is probable." }
-                            ]
-                        }
+                        { stage: 1, scenario: "Apex Shield purchases an underwriting branch property for ₹60,00,000, incurring ₹6,00,000 in stamp registration fees and ₹4,00,000 in electrical elevation works. An independent valuer appraises market worth at ₹85,00,000.", question: "At what capitalized amount must this real asset be recorded under the Historical Cost Concept?", options: [{ id: "A", text: "Capitalize at total historical acquisition cost of ₹70,00,000 (Purchase ₹60L + Stamp ₹6L + Setup ₹4L)", isCorrect: true, financialImpact: { cash: -7000000 }, feedback: "Correct. Historical cost includes all acquisition and commissioning expenditures required to bring the asset into operating condition, ignoring unrealized market appraisals." }, { id: "B", text: "Record at appraised market value ₹85,00,000 and recognize ₹15L revaluation profit", isCorrect: false, misc: "MIS_HISTORICAL_COST_VIOLATION", feedback: "Incorrect. Under GAAP cost conventions, fixed assets cannot be written up to subjective market values upon purchase." }] },
+                        { stage: 2, scenario: "Apex Shield receives a proposal for a ₹15,00,000 commercial warehouse policy. The cover note terms are agreed, but the client premium cheque has not yet been deposited.", question: "Under statutory realization principles, can Apex Shield assume underwriting risk and book revenue today?", options: [{ id: "A", text: "No risk assumed and zero revenue recognized until premium is received in advance", isCorrect: true, financialImpact: {}, feedback: "Correct. Statutory insurance realization rules strictly prohibit assuming risk on credit prior to advance premium collection." }, { id: "B", text: "Debit Premium Debtors ₹15L | Credit Underwriting Revenue ₹15L", isCorrect: false, misc: "MIS_CREDIT_UNDERWRITING_ERROR", feedback: "Incorrect. General insurance rules override normal trade credit; premium cannot be booked as revenue on credit." }] },
+                        { stage: 3, scenario: "Actuarial and legal teams identify a pending dispute on an active marine cargo claim of ₹6,00,000 with a high probability of legal payout.", question: "How must this probable loss event be handled under the Principle of Prudence (Conservatism)?", options: [{ id: "A", text: "Create an immediate Claims Provision of ₹6,00,000 (Expense ₹6L, Liability ₹6L)", isCorrect: true, financialImpact: { expenses: 600000, liabilities: 600000 }, feedback: "Correct. Prudence dictates recognizing all foreseeable losses and claims immediately upon identification." }, { id: "B", text: "Defer recognition until the court issues its final judicial decree", isCorrect: false, misc: "MIS_PRUDENCE_PROVISION_FAILURE", feedback: "Incorrect. Conservatism requires immediate provisioning when loss obligations are probable, rather than waiting for final legal settlement." }] }
                     ]
                 },
                 exam: [
-                    {
-                        id: "u2_q1",
-                        question: "1. According to the Business Entity Concept, transactions of the business and the owner are:",
-                        options: [
-                            { id: "A", text: "Merged together into a single personal ledger", isCorrect: false, misc: "MIS_ENTITY_MERGER_ERROR" },
-                            { id: "B", text: "Recorded separately, treating the business as an independent entity", isCorrect: true },
-                            { id: "C", text: "Recorded only when the business is liquidated", isCorrect: false, misc: "MIS_LIQUIDATION_CONFUSION" },
-                            { id: "D", text: "Ignored for income tax purposes", isCorrect: false, misc: "MIS_TAX_IGNORANCE" }
-                        ],
-                        explanation: "Business Entity concept dictates that personal drawings and corporate investments are tracked distinctly."
-                    },
-                    {
-                        id: "u2_q2",
-                        question: "2. The fundamental accounting equation expressing the Dual Aspect Concept is:",
-                        options: [
-                            { id: "A", text: "Assets = Liabilities + Capital", isCorrect: true },
-                            { id: "B", text: "Assets = Liabilities - Capital", isCorrect: false, misc: "MIS_EQUATION_INVERSION" },
-                            { id: "C", text: "Revenues = Expenses + Liabilities", isCorrect: false, misc: "MIS_REVENUE_EQUATION_CONFUSION" },
-                            { id: "D", text: "Assets = Gross Written Premium", isCorrect: false, misc: "MIS_PREMIUM_EQUATION_ERROR" }
-                        ],
-                        explanation: "Total business resources (Assets) are claims of outsiders (Liabilities) and owners (Capital)."
-                    },
-                    {
-                        id: "u2_q3",
-                        question: "3. Under Section 64VB of the Insurance Act 1938, revenue from insurance premium is recognized:",
-                        options: [
-                            { id: "A", text: "On credit when the policy schedule is printed", isCorrect: false, misc: "MIS_CREDIT_ACCRUAL_ERROR" },
-                            { id: "B", text: "Only upon actual advance receipt of premium or bank guarantee", isCorrect: true },
-                            { id: "C", text: "At the time of claim intimation", isCorrect: false, misc: "MIS_CLAIM_TIMING_ERROR" },
-                            { id: "D", text: "When the policy expires after 12 months", isCorrect: false, misc: "MIS_EXPIRY_CONFUSION" }
-                        ],
-                        explanation: "Section 64VB mandates prepayment before insurance risk assumption is legally valid."
-                    },
-                    {
-                        id: "u2_q4",
-                        question: "4. The matching concept requires that revenues and related incurred expenses must:",
-                        options: [
-                            { id: "A", text: "Belong to and be recognized in the same accounting period", isCorrect: true },
-                            { id: "B", text: "Be settled in cash on the same calendar day", isCorrect: false, misc: "MIS_CASH_MATCHING_CONFUSION" },
-                            { id: "C", text: "Equal the exact share capital of the entity", isCorrect: false, misc: "MIS_CAPITAL_CONFUSION" },
-                            { id: "D", text: "Be deferred for 5 accounting years", isCorrect: false, misc: "MIS_DEFERRAL_ERROR" }
-                        ],
-                        explanation: "Matching links incurred operating costs directly to the revenue generated in that period."
-                    },
-                    {
-                        id: "u2_q5",
-                        question: "5. Stock in trade is valued at cost or net realisable value, whichever is lower, based on:",
-                        options: [
-                            { id: "A", text: "Principle of Materiality", isCorrect: false, misc: "MIS_MATERIALITY_CONFUSION" },
-                            { id: "B", text: "Principle of Prudence / Conservatism", isCorrect: true },
-                            { id: "C", text: "Principle of Going Concern", isCorrect: false, misc: "MIS_GOING_CONCERN_CONFUSION" },
-                            { id: "D", text: "Principle of Periodicity", isCorrect: false, misc: "MIS_PERIODICITY_CONFUSION" }
-                        ],
-                        explanation: "Prudence avoids overstating asset values and anticipates probable inventory decline."
-                    },
-                    {
-                        id: "u2_q6",
-                        question: "6. A firm purchases a machine for ₹50,000, paying ₹5,000 freight and ₹5,000 installation. Recorded value under Cost Concept is:",
-                        options: [
-                            { id: "A", text: "₹50,000 (Purchase price only)", isCorrect: false, misc: "MIS_CAPITALIZED_COST_OMISSION" },
-                            { id: "B", text: "₹60,000 (Purchase + Freight + Installation)", isCorrect: true },
-                            { id: "C", text: "₹45,000 (Net of expenses)", isCorrect: false, misc: "MIS_EXPENSE_DEDUCTION_ERROR" },
-                            { id: "D", text: "Current market replacement value", isCorrect: false, misc: "MIS_MARKET_VALUE_CONFUSION" }
-                        ],
-                        explanation: "Historical cost includes all expenses incurred to bring the asset to operating condition."
-                    },
-                    {
-                        id: "u2_q7",
-                        question: "7. Why does an insurance company create a Reserve for Unearned Premium (URR)?",
-                        options: [
-                            { id: "A", text: "To allocate unexpired premium to subsequent accounting periods (Matching)", isCorrect: true },
-                            { id: "B", text: "To eliminate income tax liability", isCorrect: false, misc: "MIS_TAX_EVASION_CONFUSION" },
-                            { id: "C", text: "Because cash was not received", isCorrect: false, misc: "MIS_CASH_RECEIPT_ERROR" },
-                            { id: "D", text: "To increase shareholder dividend payouts", isCorrect: false, misc: "MIS_DIVIDEND_MISCONCEPTION" }
-                        ],
-                        explanation: "URR reserves match written premiums with the portions of risk extending beyond year-end."
-                    },
-                    {
-                        id: "u2_q8",
-                        question: "8. If a company changes its depreciation method from SLM to WDV, which principle requires disclosure?",
-                        options: [
-                            { id: "A", text: "Principle of Consistency (Disclose nature and material impact in Notes)", isCorrect: true },
-                            { id: "B", text: "Money Measurement Concept", isCorrect: false, misc: "MIS_MONEY_MEASUREMENT_CONFUSION" },
-                            { id: "C", text: "Business Entity Concept", isCorrect: false, misc: "MIS_ENTITY_CONFUSION" },
-                            { id: "D", text: "Realisation Concept", isCorrect: false, misc: "MIS_REALISATION_CONFUSION" }
-                        ],
-                        explanation: "Consistency requires identical methods across periods; any departure must be quantified."
-                    },
-                    {
-                        id: "u2_q9",
-                        question: "9. Advance stationery payment of ₹100 is written off immediately by a large firm under which principle?",
-                        options: [
-                            { id: "A", text: "Principle of Materiality", isCorrect: true },
-                            { id: "B", text: "Going Concern Concept", isCorrect: false, misc: "MIS_GOING_CONCERN_CONFUSION" },
-                            { id: "C", text: "Dual Aspect Concept", isCorrect: false, misc: "MIS_DUALITY_CONFUSION" },
-                            { id: "D", text: "Realisation Concept", isCorrect: false, misc: "MIS_REALISATION_CONFUSION" }
-                        ],
-                        explanation: "Immaterial trivial items do not influence economic decisions and need not be capitalized."
-                    },
-                    {
-                        id: "u2_q10",
-                        question: "10. Which of the following is NOT an element of the Balance Sheet?",
-                        options: [
-                            { id: "A", text: "Assets", isCorrect: false, misc: "MIS_ASSET_EXCLUSION" },
-                            { id: "B", text: "Liabilities", isCorrect: false, misc: "MIS_LIABILITY_EXCLUSION" },
-                            { id: "C", text: "Equity / Share Capital", isCorrect: false, misc: "MIS_EQUITY_EXCLUSION" },
-                            { id: "D", text: "Operating Sales Revenue / Income", isCorrect: true }
-                        ],
-                        explanation: "Revenue and Expenses are elements of the Income Statement / P&L, not the Balance Sheet."
-                    }
+                    { id: "u2_q1", question: "1. According to the Business Entity Concept, the personal financial transactions of an enterprise owner are:", options: [{ id: "A", text: "Consolidated directly into corporate operating expenses", isCorrect: false, misc: "MIS_ENTITY_MERGER_ERROR" }, { id: "B", text: "Recorded separately, treating the business as an independent legal unit", isCorrect: true }, { id: "C", text: "Recognized only during winding up proceedings", isCorrect: false, misc: "MIS_WINDING_UP_ENTITY_CONFUSION" }, { id: "D", text: "Treated as statutory capital reserves", isCorrect: false, misc: "MIS_RESERVE_ENTITY_CONFUSION" }], explanation: "The Business Entity Concept establishes the enterprise as an independent unit distinct from its owners." }
+                ]
+            },
+            "unit3": {
+                id: "unit3",
+                title: "Lab 03: Accounting Standards & Convergence Framework",
+                subheading: "National AS Board Rules, Ind AS (IFRS Convergence), Sector Carve-Outs, and the Direct Cash Flow Mandate",
+                bites: [
+                    { tag: "Concept 01", title: "Dual Standards Architecture in India", desc: "India operates a dual-track accounting architecture: 27 active Accounting Standards (AS) notified under Companies (AS) Rules 2021, and 39 IFRS-converged Indian Accounting Standards (Ind AS) notified by the MCA.", rule: "Convergence Rule: India adopted IFRS convergence (Ind AS) rather than direct literal adoption." },
+                    { tag: "Concept 02", title: "Standard Setting Authority (ASB & ICAI)", desc: "Accounting Standards are designed by the Accounting Standards Board (ASB) constituted by ICAI in April 1977, and notified by Central Government under Section 133 of Companies Act 2013.", rule: "Legal Primacy: Where statutory sector law conflicts with an accounting standard, the provisions of the statute prevail." },
+                    { tag: "Concept 03", title: "Regulatory Carve-Out 1: AS 3 Cash Flow Direct Method", desc: "Under statutory accounting regulations, non-life insurance carriers are mandated to present Cash Flow Statements strictly via the Direct Method.", rule: "Carve-Out Law: The Indirect Method permitted under AS 3 is prohibited for statutory insurance regulatory filing." },
+                    { tag: "Concept 04", title: "Regulatory Carve-Out 2: AS 13 Investment Portfolios", desc: "AS 13 does not govern insurance investment portfolios. Equity investments are held at Fair Value, with unrealized gains credited to the Fair Value Change Account (Reserve) rather than P&L.", rule: "Portfolio Override: Specific insurance investment regulations supersede AS 13 valuation rules." },
+                    { tag: "Concept 05", title: "Regulatory Carve-Out 3: AS 17 Segment Reporting", desc: "AS 17 Segment Reporting applies universally to all insurance enterprises across Fire, Marine, and Miscellaneous segments, irrespective of listing status or turnover limits.", rule: "Universal Application: Commercial turnover exemptions for segment reporting are nullified in the insurance sector." },
+                    { tag: "Concept 06", title: "Ind AS 104 & IFRS 17 Implementation Status", desc: "Ind AS 104 governs insurance contracts in the interim. Implementation of Ind AS 109 (Financial Instruments) and Ind AS equivalent of IFRS 17 (Insurance Contracts) is synchronized for coordinated sector rollout.", rule: "Transition Law: Once an entity adopts Ind AS voluntarily or mandatorily, it cannot revert to national AS." }
+                ],
+                sandbox: {
+                    initialState: { cash: 12000000, liabilities: 3000000, equity: 10000000, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
+                    stages: [
+                        { stage: 1, scenario: "Apex Shield purchases listed equity securities for ₹40,00,000. At the close of the financial year, market value appreciates to ₹52,00,000.", question: "Under statutory insurance accounting regulations (overriding AS 13), how must the ₹12,00,000 unrealized gain be recorded?", options: [{ id: "A", text: "Credit Fair Value Change Account ₹12,00,000 (Balance Sheet Reserve) without taking into P&L", isCorrect: true, financialImpact: { liabilities: 1200000 }, feedback: "Correct. Insurance regulations supersede AS 13: listed equities are carried at fair value, and unrealized gains are parked in the Fair Value Change Account." }, { id: "B", text: "Credit ₹12,00,000 directly to Profit & Loss Account as realized trading income", isCorrect: false, misc: "MIS_INVESTMENT_UNREALIZED_PL_ERROR", feedback: "Incorrect. Unrealized fair value gains cannot be recognized as realized income in the Profit & Loss statement." }] },
+                        { stage: 2, scenario: "Apex Shield compiles its statutory annual cash flow statement for submission to regulatory authorities.", question: "Which presentation method is legally permitted under sector accounting regulations?", options: [{ id: "A", text: "Direct Method only (gross cash receipts from policyholders and gross payments to claimants/vendors)", isCorrect: true, financialImpact: {}, feedback: "Correct. Insurance accounting regulations specifically mandate the Direct Method for cash flow reporting, excluding the indirect adjustment technique." }, { id: "B", text: "Indirect Method reconciling operating net profit with working capital changes", isCorrect: false, misc: "MIS_INDIRECT_CASH_FLOW_ERROR", feedback: "Incorrect. The Indirect Method permitted under AS 3 is carved out and prohibited for insurer regulatory accounts." }] },
+                        { stage: 3, scenario: "Apex Shield operates Fire, Marine, and Miscellaneous underwriting departments as an unlisted entity with an annual turnover of ₹45 Crores.", question: "Is Apex Shield required to publish segment reporting under AS 17?", options: [{ id: "A", text: "Yes, Segment Reporting is mandatory for all insurers irrespective of turnover thresholds or stock listing", isCorrect: true, financialImpact: {}, feedback: "Correct. Statutory regulations eliminate commercial turnover limits; all insurers must present departmental segment results." }, { id: "B", text: "Exempt because turnover is below general commercial corporate thresholds", isCorrect: false, misc: "MIS_SEGMENT_EXEMPTION_CONFUSION", feedback: "Incorrect. General corporate size exemptions under AS 17 do not apply to insurance business." }] }
+                    ]
+                },
+                exam: [
+                    { id: "u3_q1", question: "1. Which professional body is responsible for designing and formulating Accounting Standards in India?", options: [{ id: "A", text: "Insurance Regulatory and Development Authority", isCorrect: false, misc: "MIS_REGULATOR_AS_BODY_CONFUSION" }, { id: "B", text: "Accounting Standards Board (ASB) of ICAI", isCorrect: true }, { id: "C", text: "Securities and Exchange Board of India", isCorrect: false, misc: "MIS_SEBI_AS_CONFUSION" }, { id: "D", text: "National Stock Exchange Council", isCorrect: false, misc: "MIS_STOCK_EXCHANGE_CONFUSION" }], explanation: "Accounting Standards in India are developed by the Accounting Standards Board (ASB) established by ICAI in 1977." }
+                ]
+            },
+            "unit4": {
+                id: "unit4",
+                title: "Lab 04: Financial Reporting Policies & URR Mechanics",
+                subheading: "AS 1 Mandatory Disclosures, Statutory URR Reserving (100% / 50% / 1/365), and PDR Actuarial Deficits",
+                bites: [
+                    { tag: "Concept 01", title: "Nature & Role of Accounting Policies", desc: "Accounting policies are specific principles, bases, conventions, rules, and practices adopted by an enterprise in preparing and presenting financial statements. They ensure reliability, consistency, and meaningful inter-firm and intra-firm comparability.", rule: "Quality Mandate: Judicious policy selection prevents financial statements from misstating operating solvency." },
+                    { tag: "Concept 02", title: "AS 1 Disclosure of Significant Policies", desc: "Under Accounting Standard 1 (AS 1), all significant accounting policies followed in preparing financial statements must be disclosed as an integral part of the accounts in the 'Notes to Accounts'.", rule: "Disclosure Law: Full, fair, and transparent disclosure of significant policies is statutory." },
+                    { tag: "Concept 03", title: "3 Statutory Grounds for Policy Changes", desc: "An enterprise cannot alter its accounting policies arbitrarily. A change is permitted only if: 1. Required by statute; 2. Required for compliance with an Accounting Standard; or 3. It reflects a truer and fairer view of financial statements.", rule: "Quantification Rule: The financial impact of any policy change must be quantified and disclosed in the Notes to Accounts." },
+                    { tag: "Concept 04", title: "Statutory Reserve for Unexpired Risk (URR)", desc: "Under Section 11(1) of the Insurance Act 1938 as amended, insurers must create a technical URR reserve against active risk extending beyond the reporting year: 100% of Net Written Premium for Marine Hull, and 50% (or 1/365 daily pro-rata) for Fire and Miscellaneous lines.", rule: "URR Formula: Marine Hull = 100% NWP; Fire/Misc/Cargo = 50% NWP (or 1/365 method)." },
+                    { tag: "Concept 05", title: "Premium Deficiency Reserve (PDR) Mechanics", desc: "A Premium Deficiency Reserve (PDR) must be recognized whenever expected claim payouts and maintenance expenses on in-force policies exceed the statutory Reserve for Unexpired Risks (URR).", rule: "Deficit Law: PDR is an immediate operational expense and balance sheet provision mandated under Prudence." },
+                    { tag: "Concept 06", title: "The 24 Mandatory Insurance Policy Heads", desc: "Financial statements of non-life insurers must explicitly disclose 24 distinct policy heads, including: Premium Recognition, Basis of Estimates, Advance Premium, Reinsurance Ceded/Accepted, URR, PDR, IBNR Reserves, Acquisition Costs, Management Expense Apportionment, Fund Segregation, and Investment Impairment.", rule: "Uniformity: Standardized disclosure heads guarantee transparency across the insurance market." }
+                ],
+                sandbox: {
+                    initialState: { cash: 15000000, liabilities: 4000000, equity: 11000000, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
+                    stages: [
+                        { stage: 1, scenario: "Apex Shield writes ₹80,00,000 Net Written Premium in Marine Hull and ₹1,50,00,000 Net Written Premium in Fire insurance during the financial year.", question: "Calculate the total statutory Reserve for Unexpired Risk (URR) liability required under sector accounting policies.", options: [{ id: "A", text: "Establish ₹1,55,00,000 URR Liability (100% on Marine Hull ₹80L + 50% on Fire ₹75L)", isCorrect: true, financialImpact: { liabilities: 15500000, expenses: 15500000 }, feedback: "Correct. Statutory policy mandates 100% NWP reserve for Marine Hull (₹80L) and 50% NWP for Fire (₹75L), totaling ₹1,55,00,000." }, { id: "B", text: "Establish ₹1,15,00,000 flat URR Liability (50% across both Marine Hull and Fire)", isCorrect: false, misc: "MIS_URR_MARINE_HULL_UNDERRESERVE", feedback: "Incorrect. Marine Hull business strictly requires a 100% Net Written Premium reserve due to voyage exposure risks." }] },
+                        { stage: 2, scenario: "Apex Shield changes its stores and inventory valuation method from Weighted Average to FIFO to achieve a truer and fairer presentation under AS 2.", question: "What compliance procedure is mandatory under AS 1 and corporate disclosure rules?", options: [{ id: "A", text: "Disclose the nature of the change, the justification, and quantify the material financial impact in Notes to Accounts", isCorrect: true, financialImpact: {}, feedback: "Correct. Under AS 1, whenever a policy change is made, its nature, justification, and quantified monetary impact must be disclosed in Notes." }, { id: "B", text: "No note disclosure required since both methods are permitted under AS 2", isCorrect: false, misc: "MIS_POLICY_DISCLOSURE_OMISSION", feedback: "Incorrect. AS 1 strictly mandates disclosing the effect of any accounting policy modification regardless of standard permissibility." }] },
+                        { stage: 3, scenario: "Actuarial valuation of Apex Shield's Motor portfolio indicates that expected future claim costs and policy servicing expenses will exceed the current URR reserve by ₹12,00,000.", question: "How must this anticipated underwriting deficit be recognized in the accounts?", options: [{ id: "A", text: "Recognize an immediate Premium Deficiency Reserve (PDR) of ₹12,00,000 as an Expense and Liability", isCorrect: true, financialImpact: { expenses: 1200000, liabilities: 1200000 }, feedback: "Correct. Under the Prudence Principle and sector accounting policies, PDR must be established immediately when prospective losses exceed URR." }, { id: "B", text: "Defer recognition until actual claims are filed by motor policyholders next year", isCorrect: false, misc: "MIS_PDR_DEFERRAL_ERROR", feedback: "Incorrect. Expected premium deficiency cannot be deferred; it must be provisioned in the current period." }] }
+                    ]
+                },
+                exam: [
+                    { id: "u4_q1", question: "1. The term 'Accounting Policies' encompasses which of the following components?", options: [{ id: "A", text: "The specific measurement bases used by an entity", isCorrect: false, misc: "MIS_MEASUREMENT_ONLY" }, { id: "B", text: "The accounting concepts and conventions adopted", isCorrect: false, misc: "MIS_CONCEPTS_ONLY" }, { id: "C", text: "The accounting principles applied in financial statement preparation", isCorrect: false, misc: "MIS_PRINCIPLES_ONLY" }, { id: "D", text: "All of the above (principles, bases, conventions, rules, and practices)", isCorrect: true }], explanation: "Accounting policies include the specific principles, bases, conventions, and procedures adopted by an entity in preparing accounts." }
+                ]
+            },
+            "unit5": {
+                id: "unit5",
+                title: "Lab 05: The Double-Entry Processing Cycle",
+                subheading: "3-Fold Account Classifications, Universal Golden Rules, Subsidiary Registers, and Capital vs. Revenue Allocation",
+                bites: [
+                    { tag: "Concept 01", title: "The 6 Sequential Accounting Stages", desc: "The accounting cycle follows 6 sequential phases: 1. Journalising in primary books; 2. Posting to general ledger accounts; 3. Balancing ledger balances; 4. Extracting the Trial Balance; 5. Drafting the Profit & Loss statement; 6. Finalizing the Balance Sheet.", rule: "Accuracy Anchor: The Trial Balance establishes arithmetical equality across all debit and credit postings." },
+                    { tag: "Concept 02", title: "Double-Entry Foundation (Lucas Pacioli)", desc: "Every transaction produces dual balanced legs (Debit and Credit) of identical value. Transactions can be structured as one-to-one, one-to-many, or compound many-to-many entries.", rule: "Equilibrium Law: Total Debit values must equal Total Credit values in every journal posting." },
+                    { tag: "Concept 03", title: "3-Fold Account Classification", desc: "Accounts are categorized into: 1. Personal (Natural individuals, Artificial corporations, Representative capital/drawings); 2. Real (Tangible machinery/cash and Intangible goodwill/patents); 3. Nominal (Revenues, gains, expenses, losses).", rule: "Classification Rule: Intangible assets like patents, brands, and goodwill are Real Accounts." },
+                    { tag: "Concept 04", title: "The 3 Universal Golden Rules", desc: "Personal Accounts: Debit the receiver, Credit the giver. Real Accounts: Debit what comes in, Credit what goes out. Nominal Accounts: Debit all expenses and losses, Credit all incomes and gains.", rule: "Universal Application: These three rules govern all double-entry ledger postings across commercial finance." },
+                    { tag: "Concept 05", title: "Principal vs. Subsidiary Ledgers", desc: "Subsidiary Books (Journals) record transactions at origin: Cash Book, Sales Day Book, Purchase Book, Returns Inward (Sales Returns), Returns Outward (Purchase Returns). Principal Books comprise balanced General Ledgers.", rule: "Terminology: The Sales Return Book is formally titled the Returns Inward Book." },
+                    { tag: "Concept 06", title: "Capital vs. Revenue Expenditure", desc: "Capital transactions create assets extending utility beyond one reporting year (Balance Sheet). Revenue expenditures exhaust utility within the active accounting period (P&L expense).", rule: "Depreciation: Capital expenditures flow into P&L over their operational life through depreciation." }
+                ],
+                sandbox: {
+                    initialState: { cash: 10000000, liabilities: 2000000, equity: 8000000, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
+                    stages: [
+                        { stage: 1, scenario: "Apex Shield purchases an enterprise server rack for ₹4,50,000 by cheque to process automated claims underwriting.", question: "Applying the Golden Rules, what is the exact double-entry ledger classification?", options: [{ id: "A", text: "Debit Server Machinery A/c ₹4,50,000 (Real - Comes in) | Credit Bank A/c ₹4,50,000 (Real - Goes out)", isCorrect: true, financialImpact: { cash: -450000 }, feedback: "Correct. Machinery is a Tangible Real asset coming into the enterprise; Bank funds represent a Real asset flowing out." }, { id: "B", text: "Debit Underwriting Server Expense ₹4,50,000 (Nominal) | Credit Bank A/c ₹4,50,000", isCorrect: false, misc: "MIS_CAPITAL_EXPENDITURE_MISCLASSIFICATION", feedback: "Incorrect. Server hardware provides multi-year utility and represents a Capital Expenditure asset, not an immediate operating revenue expense." }] },
+                        { stage: 2, scenario: "Apex Shield receives a direct credit of ₹2,50,000 into its bank account representing half-yearly yield interest on statutory sovereign bond deposits.", question: "How is this transaction journalised in Apex Shield's books under double-entry rules?", options: [{ id: "A", text: "Debit Bank A/c ₹2,50,000 (Real - Comes in) | Credit Interest Yield Income A/c ₹2,50,000 (Nominal - Gain)", isCorrect: true, financialImpact: { cash: 250000, revenue: 250000 }, feedback: "Correct. Cash asset increases via debit, and interest income is recognized as a nominal gain via credit." }, { id: "B", text: "Debit Interest Yield A/c ₹2,50,000 | Credit Bank A/c ₹2,50,000", isCorrect: false, misc: "MIS_NOMINAL_INCOME_INVERSION", feedback: "Incorrect. The Golden Rule for Nominal accounts states: 'Credit all incomes and gains'." }] },
+                        { stage: 3, scenario: "Apex Shield pays ₹75,000 monthly branch office premises rent by corporate bank transfer.", question: "What is the dual accounting classification for this operational lease disbursement?", options: [{ id: "A", text: "Debit Rent Expense A/c ₹75,000 (Nominal - Expense) | Credit Bank A/c ₹75,000 (Real - Goes out)", isCorrect: true, financialImpact: { cash: -75000, expenses: 75000 }, feedback: "Correct. Rent incurred is a nominal operational expense (Debit) and bank resources decrease (Credit)." }, { id: "B", text: "Debit Landlord Personal A/c ₹75,000 | Credit Cash A/c ₹75,000", isCorrect: false, misc: "MIS_PERSONAL_NOMINAL_CONFUSION", feedback: "Incorrect. Operational rent consumed for business premises is debited to Rent Expense Account (Nominal), not a personal debtor account." }] }
+                    ]
+                },
+                exam: [
+                    { id: "u5_q1", question: "1. In systematic double-entry bookkeeping, what constitutes the first operational step in the accounting cycle?", options: [{ id: "A", text: "Balancing of general ledger accounts", isCorrect: false, misc: "MIS_LEDGER_BALANCING_FIRST" }, { id: "B", text: "Journalising transactions in chronological order with Debit and Credit", isCorrect: true }, { id: "C", text: "Extraction of the Trial Balance", isCorrect: false, misc: "MIS_TRIAL_BALANCE_FIRST" }, { id: "D", text: "Drafting the annual Balance Sheet", isCorrect: false, misc: "MIS_BALANCE_SHEET_FIRST" }], explanation: "The accounting cycle commences with recording transactions in the journal (Book of Prime Entry)." }
+                ]
+            },
+            "unit6": {
+                id: "unit6",
+                title: "Lab 06: Transaction Control & Final Accounts",
+                subheading: "Cash vs. Accrual Systems, Double-Column Cash Book Contra Entries, Trial Balance Balancing, and Final Accounts Adjustments",
+                bites: [
+                    { tag: "Concept 01", title: "Cash Basis vs. Accrual Basis Systems", desc: "Cash basis recognizes revenues and expenses solely upon physical cash receipt or disbursement. Accrual accounting recognizes revenues when earned and expenses when incurred, irrespective of settlement timing.", rule: "GAAP / IFRS Law: Accrual accounting is mandatory for corporate reporting to reflect true productivity and net worth." },
+                    { tag: "Concept 02", title: "Compound Journal Entries & Prime Records", desc: "The General Journal is the Book of Original / Prime Entry recording transactions chronologically with descriptive narrations. Compound entries link multiple debits or credits while maintaining mathematical equality.", rule: "Equation Rule: In any journal entry (simple or compound), Total Debits must equal Total Credits." },
+                    { tag: "Concept 03", title: "Double-Column Cash Book & Contra Entries", desc: "Combines Cash and Bank columns side-by-side. Internal transfers (cash deposited into bank or cash withdrawn for office imprest) are Contra Entries marked with 'C' in the Ledger Folio (L.F.).", rule: "Balance Rule: The Cash column always maintains a Debit (or zero) balance; Bank column can reflect an overdraft Credit balance." },
+                    { tag: "Concept 04", title: "Petty Cash & The Imprest Control System", desc: "Handles small, routine cash disbursements (postage, local conveyance, refreshments) through dedicated columnar expenditure heads. It prevents cluttering the main cash book.", rule: "Imprest Mechanism: The petty cashier is reimbursed the exact sum expended periodically, restoring the float." },
+                    { tag: "Concept 05", title: "Trial Balance Objectives & Detection Limits", desc: "A schedule of closing debit and credit ledger balances on a specific date to verify arithmetical accuracy. It routes Nominal accounts to P&L, and Personal/Real accounts to the Balance Sheet.", rule: "Blind Spots: Errors of principle (capitalizing revenue costs) and compensating errors do not disrupt Trial Balance totals." },
+                    { tag: "Concept 06", title: "Final Accounts Adjustments & Year-End Closure", desc: "Final accounts comprise: 1. Trading Account (Gross Profit); 2. Profit & Loss Account (Net Profit); 3. P&L Appropriation (Equity distributions); 4. Balance Sheet (Financial Position).", rule: "Duality of Adjustments: Every adjustment given outside the Trial Balance must be posted to two distinct financial statement locations." }
+                ],
+                sandbox: {
+                    initialState: { cash: 5000000, liabilities: 1000000, equity: 4000000, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
+                    stages: [
+                        { stage: 1, scenario: "Apex Shield receives ₹15,00,000 in gross underwriting premium collections (₹3,00,000 in cash and ₹12,00,000 in cheques). On the same afternoon, the cashier deposits the entire ₹3,00,000 physical cash collection into the corporate bank account.", question: "How is the ₹3,00,000 cash deposit recorded in the Double-Column Cash Book?", options: [{ id: "A", text: "Post a Contra Entry ('C'): Debit Bank Column ₹3,00,000 | Credit Cash Column ₹3,00,000", isCorrect: true, financialImpact: {}, feedback: "Correct. Transfer of liquid funds between physical cash and bank accounts is recorded as a Contra Entry marked with 'C' in the L.F. column." }, { id: "B", text: "Debit Bank Account ₹3,00,000 | Credit Premium Revenue ₹3,00,000", isCorrect: false, misc: "MIS_CONTRA_REVENUE_CONFUSION", feedback: "Incorrect. Depositing collected cash into the bank is an internal cash-bank movement, not an additional revenue realization event." }] },
+                        { stage: 2, scenario: "At annual accounting closure, Apex Shield discovers that ₹1,50,000 in agency marketing commission paid was for next year's renewals (Prepaid), while ₹2,50,000 in surveyor inspection fees remain unpaid (Outstanding).", question: "How are these two adjustment entries posted into the Final Accounts under the Accrual Matching Concept?", options: [{ id: "A", text: "Deduct ₹1.5L Prepaid from Expenses (Current Asset) and Add ₹2.5L Outstanding Fees to Expenses (Current Liability)", isCorrect: true, financialImpact: { expenses: 100000, liabilities: 250000 }, feedback: "Correct. Prepaid expenses reduce current costs and create a Current Asset; accrued unpaid expenses increase operating costs and create a Current Liability." }, { id: "B", text: "Ignore both items since adjustments only apply to physical cash transactions", isCorrect: false, misc: "MIS_ACCRUAL_ADJUSTMENT_OMISSION", feedback: "Incorrect. Accrual accounting requires adjusting for all unearned prepayments and incurred liabilities before finalizing accounts." }] },
+                        { stage: 3, scenario: "Sundry debtors stand at ₹60,00,000. Actuaries recommend writing off ₹4,00,000 as irrecoverable bad debts and creating a 5% Provision for Doubtful Debts on the remaining balance.", question: "What is the net total charge to the Profit & Loss statement and the net Sundry Debtors value shown on the Balance Sheet?", options: [{ id: "A", text: "Charge ₹6,80,000 to P&L (Bad Debt ₹4L + Provision ₹2.8L); Present Debtors as ₹53,20,000 on Balance Sheet", isCorrect: true, financialImpact: { expenses: 680000 }, feedback: "Correct. Remaining debtors = ₹60L - ₹4L = ₹56,00,000. 5% Provision = ₹2,80,000. Net debtors on Balance Sheet = ₹56L - ₹2.8L = ₹53,20,000." }, { id: "B", text: "Calculate 5% on gross ₹60,00,000 without deducting bad debts first", isCorrect: false, misc: "MIS_PROVISION_ORDER_CALCULATION", feedback: "Incorrect. The provision percentage must always be calculated on debtors remaining AFTER deducting actual bad debts written off." }] }
+                    ]
+                },
+                exam: [
+                    { id: "u6_q1", question: "1. Which of the following statements regarding the journalizing of accounting entries is correct?", options: [{ id: "A", text: "For any journal entry, credit amounts must exceed debit amounts", isCorrect: false, misc: "MIS_JOURNAL_INEQUALITY_ERROR" }, { id: "B", text: "Credits are traditionally placed on the left and debits on the right", isCorrect: false, misc: "MIS_SIDE_CONVENTION_INVERSION" }, { id: "C", text: "Journalisation is the process of converting economic transactions into debit-credit formats with narrations", isCorrect: true }, { id: "D", text: "The chart of accounts balances general ledger accounts automatically", isCorrect: false, misc: "MIS_CHART_OF_ACCOUNTS_CONFUSION" }], explanation: "Journalisation is the formal recording of business transactions into a debit-credit structure supported by narrations." }
+                ]
+            },
+            "unit7": {
+                id: "unit7",
+                title: "Lab 07: Asset Capitalization & Depreciation Accounting",
+                subheading: "Companies Act 2013 Schedule II Useful Life Mandates, SLM vs. WDV Calculations, Retrospective AS 6 Method Shifts, and Disposal Gain/Loss Accounting",
+                bites: [
+                    { tag: "Concept 01", title: "Nature & Objectives of Depreciation", desc: "Depreciation is the systematic allocation of the depreciable amount of a fixed asset over its estimated useful life (Schedule II Companies Act 2013 / AS 6). Land has unlimited useful life and is exempt.", rule: "Formula: Depreciable Amount = Historical Cost minus Estimated Salvage/Residual Value." },
+                    { tag: "Concept 02", title: "SLM vs. Diminishing Balance (WDV) Method", desc: "Straight Line Method (SLM) charges a uniform annual instalment. Diminishing Balance Method (WDV) applies a fixed percentage to written-down value, matching decreasing asset efficiency with rising repair costs.", rule: "Standard Selection: WDV is standard for exhausting mechanical assets; SLM is typical for office fixtures." },
+                    { tag: "Concept 03", title: "Dual Ledger Presentation Approaches", desc: "1. Direct Asset Reduction: Asset is shown at net book value on the Balance Sheet; 2. Provision for Depreciation Account: Asset remains at historical cost, with accumulated depreciation maintained in a contra-liability account.", rule: "Entry: Debit Depreciation Expense (P&L) | Credit Provision for Depreciation." },
+                    { tag: "Concept 04", title: "Retrospective Method Shifts (AS 6)", desc: "Switching depreciation methods (e.g., WDV to SLM) requires retrospective recomputation from the date of asset acquisition. Resulting surplus or deficiency is adjusted immediately in the current P&L.", rule: "Accounting Policy: Treated as a change in accounting policy with quantified note disclosures." },
+                    { tag: "Concept 05", title: "Asset Disposal & Exchange Accounting", desc: "Profit or loss on disposal equals Sale Proceeds minus Written Down Value (WDV) on disposal date. Material surpluses or deficiencies must be disclosed separately in financial statements.", rule: "Book Value: WDV = Historical Cost minus Total Accumulated Depreciation to date." },
+                    { tag: "Concept 06", title: "Companies Act 2013 Schedule II Mandates", desc: "Section 123 prohibits declaring corporate dividends without first providing for depreciation. Schedule II introduces useful life standards and component accounting aligned with Ind AS 16.", rule: "Regulatory Override: Sector regulatory useful lives override standard Schedule II guidelines." }
+                ],
+                sandbox: {
+                    initialState: { cash: 8000000, liabilities: 1500000, equity: 6000000, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
+                    stages: [
+                        { stage: 1, scenario: "Apex Shield purchases underwriting computer servers for ₹11,00,000 on 1st August. Estimated useful life is 5 years with a salvage residual value of ₹1,00,000.", question: "Under Schedule II (Companies Act 2013), what is the annual straight-line depreciation charge and the first financial year expense (8 months)?", options: [{ id: "A", text: "Annual Charge: ₹2,00,000; First Year (8 Months): ₹1,33,333 (Debit Depreciation P&L, Credit Provision)", isCorrect: true, financialImpact: { expenses: 133333, liabilities: 133333 }, feedback: "Correct. Depreciable base = ₹11L - ₹1L = ₹10,00,000 / 5 yrs = ₹2,00,000/yr. For 8 months (Aug-Mar) = ₹1,33,333." }, { id: "B", text: "Charge full ₹2,20,000 without deducting salvage scrap value", isCorrect: false, misc: "MIS_SCRAP_VALUE_OMISSION", feedback: "Incorrect. Depreciable amount is historical cost minus estimated residual scrap value." }] },
+                        { stage: 2, scenario: "Apex Shield sells an old field inspection vehicle (Cost ₹8,500, Accumulated Depreciation ₹4,148) for ₹4,750 in a trade-in exchange.", question: "What is the net profit/gain on disposal of this fixed asset?", options: [{ id: "A", text: "Gain on Disposal: ₹398 (WDV ₹4,352 vs. Sale ₹4,750)", isCorrect: true, financialImpact: { cash: 4750, revenue: 398 }, feedback: "Correct. WDV = ₹8,500 - ₹4,148 = ₹4,352. Gain on sale = ₹4,750 - ₹4,352 = ₹398." }, { id: "B", text: "Loss on Disposal: ₹3,750", isCorrect: false, misc: "MIS_DISPOSAL_WDV_ERROR", feedback: "Incorrect. Disposal profit/loss compares sale proceeds directly against WDV, not original historical cost." }] },
+                        { stage: 3, scenario: "Apex Shield transitions its depreciation method from WDV (10%) to SLM (5%) on machinery costing ₹1,20,000 held for 3 years. Recomputation creates an excess depreciation surplus of ₹6,220.", question: "How must this retrospective surplus be accounted for under AS 6 / Ind AS guidelines?", options: [{ id: "A", text: "Credit ₹6,220 excess depreciation written back to the Profit & Loss Account in the year of change", isCorrect: true, financialImpact: { revenue: 6220 }, feedback: "Correct. AS 6 mandates retrospective recomputation with surplus credited directly to current P&L." }, { id: "B", text: "Spread ₹6,220 prospectively over future periods without touching P&L", isCorrect: false, misc: "MIS_PROSPECTIVE_SURPLUS_ERROR", feedback: "Incorrect. Under AS 6, retrospective adjustments for depreciation method changes must be recognized in the year of change." }] }
+                    ]
+                },
+                exam: [
+                    { id: "u7_q1", question: "1. In accordance with AS 6 and Ind AS 16, which of the following assets is NOT a depreciable asset?", options: [{ id: "A", text: "Freehold Land", isCorrect: true }, { id: "B", text: "Factory Plant & Machinery", isCorrect: false, misc: "MIS_MACHINERY_DEP" }, { id: "C", text: "Office Buildings", isCorrect: false, misc: "MIS_BUILDING_DEP" }, { id: "D", text: "IT Server Hardware", isCorrect: false, misc: "MIS_IT_DEP" }], explanation: "Land has an unlimited useful life and does not wear out or become obsolete over time." }
+                ]
+            },
+            "unit8": {
+                id: "unit8",
+                title: "Lab 08: Cash Reconciliation",
+                subheading: "Bank Reconciliation Statements (BRS), Timing Differences, Recording Errors, and Overdraft Reconciliation",
+                bites: [
+                    { tag: "Concept 01", title: "Nature & Purpose of BRS", desc: "A statement prepared by an enterprise to reconcile differences between the Cash Book (Bank Account column) balance and the Bank Statement (Pass Book) balance.", rule: "Statement Rule: BRS is a reconciliation schedule, not a ledger account, and does not form part of double-entry." },
+                    { tag: "Concept 02", title: "Internal Control & Fraud Prevention", desc: "BRS provides a vital administrative internal control to detect unrecorded bank charges, uncredited cheques, delayed clearances, and staff embezzlement.", rule: "Corporate Governance: Monthly bank reconciliations are mandatory for internal audit compliance." },
+                    { tag: "Concept 03", title: "Timing Differences: Additions", desc: "Starting from Cash Book balance: Add 1. Cheques issued but not yet presented by payees; 2. Interest or dividends directly credited by bank; 3. Direct customer remittances.", rule: "Addition Logic: Items that increase the bank statement balance relative to cash records are added." },
+                    { tag: "Concept 04", title: "Timing Differences: Deductions", desc: "Starting from Cash Book balance: Less 1. Cheques deposited into bank but not yet cleared; 2. Bank service charges and overdraft interest debited by bank; 3. Dishonoured customer cheques.", rule: "Deduction Logic: Items that reduce the bank statement balance relative to cash records are deducted." },
+                    { tag: "Concept 05", title: "Recording Errors in Books", desc: "Discrepancies arise from entering incorrect amounts, interchanging debit/credit sides, casting errors in cash books, or erroneous bank debits.", rule: "Rectification Rule: Book errors must be corrected in the Cash Book prior to finalizing BRS." },
+                    { tag: "Concept 06", title: "Bank Overdraft Balance Rules", desc: "An overdraft in the Cash Book is a Credit balance (negative funds). In Bank Statements, an overdraft appears as a Debit balance (amount owed to bank).", rule: "Overdraft Rule: Overdraft reconciliations invert standard addition and deduction polarities." }
+                ],
+                sandbox: {
+                    initialState: { cash: 23700, liabilities: 0, equity: 23700, revenue: 0, expenses: 0, currentStage: 1, score: 0 },
+                    stages: [
+                        { stage: 1, scenario: "Apex Shield's Cash Book shows a bank balance of ₹23,700. The bank statement reveals ₹2,000 direct interest collected from sovereign bonds and ₹15,100 in unpresented issued cheques.", question: "How are these two items treated starting from the Cash Book Debit balance?", options: [{ id: "A", text: "Add ₹2,000 Interest + Add ₹15,100 Unpresented Cheques to Cash Book balance", isCorrect: true, financialImpact: { revenue: 2000 }, feedback: "Correct. Both direct interest and unpresented cheques increase the Bank Statement balance relative to the Cash Book." }, { id: "B", text: "Deduct both items from Cash Book balance", isCorrect: false, misc: "MIS_BRS_POLARITY_INVERSION", feedback: "Incorrect. Unpresented cheques and direct bank collections increase the pass book balance relative to books." }] },
+                        { stage: 2, scenario: "The bank statement reflects a ₹2,600 standing order insurance premium paid, and ₹13,900 in customer cheques deposited but not yet cleared.", question: "What is the correct BRS adjustment for these two items?", options: [{ id: "A", text: "Deduct ₹2,600 Standing Order and Deduct ₹13,900 Uncleared Cheques from Cash Book balance", isCorrect: true, financialImpact: { expenses: 2600 }, feedback: "Correct. Standing orders and uncleared deposits reduce the Pass Book balance relative to the Cash Book." }, { id: "B", text: "Add both items to Cash Book balance", isCorrect: false, misc: "MIS_UNCLEARED_DEPOSIT_ADDITION", feedback: "Incorrect. Uncleared deposits are in the Cash Book but not yet credited by the bank, so they must be deducted." }] },
+                        { stage: 3, scenario: "Apex Shield identifies a ₹7,300 dishonoured customer premium cheque debited in the Pass Book but omitted from the Cash Book.", question: "How is this rectified in the general accounting system?", options: [{ id: "A", text: "Deduct in BRS and pass a Cash Book rectification entry: Debit Debtor A/c ₹7,300 | Credit Bank A/c ₹7,300", isCorrect: true, financialImpact: { cash: -7300 }, feedback: "Correct. Dishonour must be deducted in BRS and adjusted in Cash Book by restoring the debtor's liability." }, { id: "B", text: "Ignore the dishonour since it relates to previous accounting quarters", isCorrect: false, misc: "MIS_DISHONOUR_IGNORANCE", feedback: "Incorrect. Dishonoured cheques must be credited in the Cash Book to reflect true cash resources." }] }
+                    ]
+                },
+                exam: [
+                    { id: "u8_q1", question: "1. A Bank Reconciliation Statement (BRS) is prepared primarily to:", options: [{ id: "A", text: "Replace the General Cash Book in double-entry ledgers", isCorrect: false, misc: "MIS_CASHBOOK_REPLACEMENT" }, { id: "B", text: "Reconcile differences between Cash Book and Bank Statement balances with reasons", isCorrect: true }, { id: "C", text: "Calculate the annual corporate income tax liability", isCorrect: false, misc: "MIS_TAX_BRS_CONFUSION" }, { id: "D", text: "Determine the Available Solvency Margin", isCorrect: false, misc: "MIS_SOLVENCY_BRS_CONFUSION" }], explanation: "BRS is a diagnostic schedule prepared by the entity to reconcile Cash Book and Bank Statement balances." }
+                ]
+            },
+            "unit9": {
+                id: "unit9",
+                title: "Lab 09: Corporate Accounts",
+                subheading: "Companies Act 2013, Schedule III Financial Statements Layout, Share Capital Hierarchy, and AS 4 Revised Proposed Dividend Disclosures",
+                bites: [
+                    { tag: "Concept 01", title: "Legal Nature of a Joint Stock Company", desc: "A company is an artificial juridical person incorporated under the Companies Act 2013 with a separate legal entity, perpetual succession, common seal, and limited liability.", rule: "Liability Rule: Shareholder liability is strictly limited to the unpaid face value of subscribed shares." },
+                    { tag: "Concept 02", title: "Section 129 True & Fair Presentation", desc: "Under Section 129(1), financial statements must give a true and fair view of corporate state of affairs, comply with Section 133 accounting standards, and follow Schedule III vertical formats.", rule: "Statutory Override: Insurance and banking enterprises are governed by their respective specific sector statutes and regulator forms." },
+                    { tag: "Concept 03", title: "Schedule III Balance Sheet Architecture", desc: "Schedule III mandates a vertical Balance Sheet layout structured into: I. Equity and Liabilities (Shareholders' Funds, Non-Current Liabilities, Current Liabilities); II. Assets (Non-Current Assets, Current Assets).", rule: "Comparative Rule: Financial statements must include comparative figures for the immediately preceding reporting period." },
+                    { tag: "Concept 04", title: "Share Capital Hierarchy Tiers", desc: "Share capital is categorized into: 1. Authorised Capital (nominal ceiling); 2. Issued Capital; 3. Subscribed Capital; 4. Called-up Capital; 5. Paid-up Capital (net of calls-in-arrears).", rule: "Equity vs. Preference: Preference shares carry preferential rights to fixed dividends and capital repayment upon winding up." },
+                    { tag: "Concept 05", title: "Proposed Dividend & Revised AS 4", desc: "Under revised AS 4 / Ind AS 10 and Schedule III, proposed dividend is NOT a liability on the balance sheet date. It is disclosed in Notes to Accounts until formally approved by shareholders at the AGM.", rule: "Payment Mandate: Once declared at the AGM, approved dividends must be disbursed within 30 days." },
+                    { tag: "Concept 06", title: "Section 134 Board's Report & Signatures", desc: "Financial statements must be approved by the Board and signed by the chairperson or two directors (including MD), CEO, CFO, and Company Secretary, accompanied by the mandatory Board's Report.", rule: "Governance Rule: The Board's Report must include the Directors' Responsibility Statement and CSR disclosures." }
+                ],
+                sandbox: {
+                    initialState: { cash: 530000, liabilities: 18352100, equity: 26904900, revenue: 45350000, expenses: 41043000, currentStage: 1, score: 0 },
+                    stages: [
+                        { stage: 1, scenario: "Apex Shield drafts its corporate Statement of Profit and Loss: Revenue from Operations ₹4,45,40,000, Other Income ₹8,10,000, and Total Expenses ₹4,10,43,000.", question: "Calculate Profit Before Tax (PBT) and Profit After Tax (PAT) assuming a 30% corporate income tax rate.", options: [{ id: "A", text: "PBT: ₹43,07,000 | Tax (30%): ₹12,92,100 | PAT: ₹30,14,900 (Transferred to Reserves & Surplus)", isCorrect: true, financialImpact: { revenue: 45350000, expenses: 41043000, liabilities: 1292100, equity: 3014900 }, feedback: "Correct. PBT = ₹4,53,50,000 - ₹4,10,43,000 = ₹43,07,000. Tax @ 30% = ₹12,92,100. PAT = ₹30,14,900." }, { id: "B", text: "PBT: ₹35,00,000 | Tax: ₹10,50,000 | PAT: ₹24,50,000", isCorrect: false, misc: "MIS_PBT_CALCULATION_ERROR", feedback: "Incorrect. Total revenue includes revenue from operations plus other investment income." }] },
+                        { stage: 2, scenario: "The Board of Directors proposes a 10% dividend (₹25,00,000) on paid-up share capital of ₹2,50,00,000 at year-end before the AGM.", question: "Under AS 4 (Revised) and Schedule III, how is this proposed dividend presented in financial statements?", options: [{ id: "A", text: "Disclose in 'Notes to Accounts' only; do NOT record as a Balance Sheet provision/liability until approved at AGM", isCorrect: true, financialImpact: {}, feedback: "Correct. Revised AS 4 states proposed dividend is not an accrued liability on balance sheet date." }, { id: "B", text: "Debit P&L Account directly and show as a Current Provision Liability", isCorrect: false, misc: "MIS_PROPOSED_DIVIDEND_PROVISION_ERROR", feedback: "Incorrect. Under revised AS 4, proposed dividend cannot be booked as a liability prior to AGM shareholder approval." }] },
+                        { stage: 3, scenario: "Apex Shield has issued 10% Debentures of ₹50,00,000. Interest paid during the year is ₹2,00,000.", question: "What is the year-end adjustment for debenture interest in the financial statements?", options: [{ id: "A", text: "Charge ₹5,00,000 full finance cost to P&L (₹2L paid + ₹3L Outstanding Liability in Schedule III)", isCorrect: true, financialImpact: { expenses: 300000, liabilities: 300000 }, feedback: "Correct. Full 10% on ₹50L is ₹5,00,000. Unpaid ₹3,00,000 is shown under Other Current Liabilities in Schedule III." }, { id: "B", text: "Charge only ₹2,00,000 cash paid to P&L and ignore unpaid debenture interest", isCorrect: false, misc: "MIS_ACCRUAL_FINANCE_COST_OMISSION", feedback: "Incorrect. Accrual accounting requires full contractual interest of ₹5,00,000 to be charged with ₹3L accrued." }] }
+                    ]
+                },
+                exam: [
+                    { id: "u9_q1", question: "1. At every Annual General Meeting (AGM) under Section 129(2), the Board of Directors shall lay before the meeting:", options: [{ id: "A", text: "The statutory audit tax returns only", isCorrect: false, misc: "MIS_TAX_RETURN_AGM" }, { id: "B", text: "Financial statements for the financial year", isCorrect: true }, { id: "C", text: "Daily subsidiary cash day books", isCorrect: false, misc: "MIS_CASH_DAY_BOOK_AGM" }, { id: "D", text: "Confidential management remuneration ledgers", isCorrect: false, misc: "MIS_REMUNERATION_AGM" }], explanation: "Section 129(2) mandates that the Board of Directors shall lay financial statements before the annual general meeting." }
                 ]
             }
         };
 
-        // Active State Controllers
-        let activeUnitKey = "unit2";
+        // State Controllers
+        let activeUnitKey = "unit9";
         let activePartKey = "bites";
         let activeSandboxState = {};
         let activeExamScore = 0;
@@ -649,7 +545,6 @@
         function switchUnit(unitKey) {
             activeUnitKey = unitKey;
             
-            // Update Sidebar Navigation Button Styles
             document.querySelectorAll('.unit-nav-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.classList.add('text-gray-300');
@@ -664,7 +559,6 @@
             document.getElementById('current-unit-heading').innerText = unit.title;
             document.getElementById('current-unit-subheading').innerText = unit.subheading;
 
-            // Initialize Sub-Systems
             renderBites();
             resetSandboxCurrentUnit();
             renderExam();
@@ -683,14 +577,14 @@
         }
 
         // ==========================================
-        // PART 1: RENDER MICRO-BITES
+        // PART 1: MICRO-BITES
         // ==========================================
         function renderBites() {
             const grid = document.getElementById('bites-grid');
             grid.innerHTML = '';
             const bites = unitDatabase[activeUnitKey].bites;
 
-            bites.forEach((b, idx) => {
+            bites.forEach(b => {
                 const card = document.createElement('div');
                 card.className = "hud-card p-4 rounded-xl space-y-2 border-t-2 border-cyan-500/80 transition-all";
                 card.innerHTML = `
@@ -709,7 +603,7 @@
         }
 
         // ==========================================
-        // PART 2: SANDBOX STATE LOGIC
+        // PART 2: SANDBOX ENGINE
         // ==========================================
         function resetSandboxCurrentUnit() {
             const unit = unitDatabase[activeUnitKey];
@@ -752,7 +646,7 @@
 
             if (option.isCorrect) {
                 feedbackBox.classList.add('bg-emerald-950/60', 'text-emerald-300', 'border-emerald-800');
-                feedbackBox.innerHTML = `<div>&#10004; <strong>Correct Transaction Treatment</strong></div><div>${option.feedback}</div>`;
+                feedbackBox.innerHTML = `<div>&#10004; <strong>Corporate Account Verified</strong></div><div>${option.feedback}</div>`;
                 
                 if (option.financialImpact) {
                     for (let k in option.financialImpact) {
@@ -762,7 +656,7 @@
                 document.getElementById('sb-action-container').classList.remove('hidden');
             } else {
                 feedbackBox.classList.add('bg-rose-950/60', 'text-rose-300', 'border-rose-800');
-                feedbackBox.innerHTML = `<div>&#10008; <strong>Principle Violation [${option.misc}]:</strong> ${option.feedback}</div>`;
+                feedbackBox.innerHTML = `<div>&#10008; <strong>Accounting Principle Error [${option.misc}]:</strong> ${option.feedback}</div>`;
                 
                 if (option.misc && !activeMisconceptions.includes(option.misc)) {
                     activeMisconceptions.push(option.misc);
@@ -785,8 +679,8 @@
                 const container = document.getElementById('sb-options-container');
                 container.innerHTML = `
                     <div class="p-5 bg-emerald-950/30 border border-emerald-800/80 rounded-xl text-center space-y-2">
-                        <span class="text-emerald-400 font-bold text-sm block">&#10004; All Scenario Stages Completed Successfully!</span>
-                        <p class="text-xs text-gray-300">Corporate transactions balanced and posted to the General Ledger.</p>
+                        <span class="text-emerald-400 font-bold text-sm block">&#10004; Lab 09 Corporate Accounts Completed!</span>
+                        <p class="text-xs text-gray-300">All Schedule III P&amp;T calculations, AS 4 proposed dividend disclosures, and debenture interest accruals verified.</p>
                         <button onclick="resetSandboxCurrentUnit()" class="mt-2 px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-xs font-bold font-mono">
                             Replay Sandbox
                         </button>
@@ -816,7 +710,7 @@
         }
 
         // ==========================================
-        // PART 3: 10-QUESTION EXAM LOGIC
+        // PART 3: 10-QUESTION EXAM ENGINE
         // ==========================================
         function renderExam() {
             activeExamScore = 0;
@@ -881,14 +775,14 @@
                     const item = document.createElement('div');
                     item.className = "flex items-center justify-between bg-[#0b0f19] px-3 py-2 rounded border border-rose-900/40 text-rose-400 font-mono text-[11px]";
                     item.innerHTML = `<span>&#9888; ${flag}</span><span class="text-gray-500 text-[10px]">Logged</span>`;
-                    listEl.appendChild(item);
+                    listEl.item(item);
                 });
             }
         }
 
-        // Initialize on load to Unit 2 (Day 2)
+        // Initialize to Lab 09 on page load
         window.addEventListener('DOMContentLoaded', () => {
-            switchUnit('unit2');
+            switchUnit('unit9');
         });
     </script>
 </body>
